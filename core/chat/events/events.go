@@ -19,8 +19,8 @@ import (
 	"github.com/yuin/goldmark/util"
 	"mvdan.cc/xurls/v2"
 
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/models"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -4,9 +4,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 )
 
 // How often we poll for updates.

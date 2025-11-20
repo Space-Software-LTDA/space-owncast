@@ -4,15 +4,15 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/chatmessagerepository"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/userrepository"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	"github.com/owncast/owncast/webserver/router/middleware"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/chatmessagerepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/userrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -70,12 +70,14 @@ func RegisterAnonymousChatUser(w http.ResponseWriter, r *http.Request) {
 		ID          string `json:"id"`
 		AccessToken string `json:"accessToken"`
 		DisplayName string `json:"displayName"`
+		Email       string `json:"email"`
 	}
 
 	decoder := json.NewDecoder(r.Body)
 	var request generated.RegisterAnonymousChatUserJSONBody // registerAnonymousUserRequest
 	if err := decoder.Decode(&request); err != nil {        //nolint
 		// this is fine. register a new user anyway.
+		log.Debugln("Failed to decode request body:", err)
 	}
 
 	proposedNewDisplayName := r.Header.Get("X-Forwarded-User")
@@ -86,9 +88,12 @@ func RegisterAnonymousChatUser(w http.ResponseWriter, r *http.Request) {
 		proposedNewDisplayName = generateDisplayName()
 	}
 
+	// Handle optional email field
+
 	proposedNewDisplayName = utils.MakeSafeStringOfLength(proposedNewDisplayName, config.MaxChatDisplayNameLength)
 	newUser, accessToken, err := userRepository.CreateAnonymousUser(proposedNewDisplayName)
 	if err != nil {
+		log.Errorf("Failed to create anonymous user: %v", err)
 		webutils.WriteSimpleResponse(w, false, err.Error())
 		return
 	}
@@ -97,6 +102,7 @@ func RegisterAnonymousChatUser(w http.ResponseWriter, r *http.Request) {
 		ID:          newUser.ID,
 		AccessToken: accessToken,
 		DisplayName: newUser.DisplayName,
+		Email:       newUser.Email,
 	}
 
 	w.Header().Set("Content-Type", "application/json")

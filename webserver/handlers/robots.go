@@ -4,7 +4,7 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 )
 
 // GetRobotsDotTxt returns the contents of our robots.txt.

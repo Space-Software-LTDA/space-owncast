@@ -1,8 +1,8 @@
 package configrepository
 
 import (
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/models"
 	log "github.com/sirupsen/logrus"
 )
 
@@ -28,7 +28,7 @@ func (r *SqlConfigRepository) PopulateDefaults() {
 	_ = r.SetSocialHandles([]models.SocialHandle{
 		{
 			Platform: "github",
-			URL:      "https://github.com/owncast/owncast",
+			URL:      "https://github.com/Space-Software-LTDA/owncast",
 		},
 	})
 

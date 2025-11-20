@@ -6,13 +6,13 @@ import (
 	"net/http"
 	"net/url"
 
-	"github.com/owncast/owncast/activitypub"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/router/middleware"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 	log "github.com/sirupsen/logrus"
 )
 

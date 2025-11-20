@@ -1,6 +1,6 @@
 package events
 
-import "github.com/owncast/owncast/models"
+import "github.com/Space-Software-LTDA/owncast/models"
 
 // ConnectedClientInfo represents the information about a connected client.
 type ConnectedClientInfo struct {

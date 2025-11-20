@@ -78,7 +78,7 @@ build:
 
   WORKDIR /build
   # MacOSX disallows static executables, so we omit the static flag on this platform
-  RUN go build -a -installsuffix cgo -ldflags "$([ "$GOOS"z != darwinz ] && echo "-linkmode external -extldflags -static ") -s -w -X github.com/owncast/owncast/config.GitCommit=$EARTHLY_GIT_HASH -X github.com/owncast/owncast/config.VersionNumber=$version -X github.com/owncast/owncast/config.BuildPlatform=$NAME" -tags sqlite_omit_load_extension -o owncast main.go
+  RUN go build -a -installsuffix cgo -ldflags "$([ "$GOOS"z != darwinz ] && echo "-linkmode external -extldflags -static ") -s -w -X github.com/Space-Software-LTDA/owncast/config.GitCommit=$EARTHLY_GIT_HASH -X github.com/Space-Software-LTDA/owncast/config.VersionNumber=$version -X github.com/Space-Software-LTDA/owncast/config.BuildPlatform=$NAME" -tags sqlite_omit_load_extension -o owncast main.go
 
 	# Decrease the size of the shipped binary. But only for non-Apple platforms.
   # See https://github.com/upx/upx/issues/612

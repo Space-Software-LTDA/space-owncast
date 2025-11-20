@@ -4,8 +4,8 @@ import (
 	"context"
 	"fmt"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
 	"github.com/go-fed/activity/streams/vocab"
-	"github.com/owncast/owncast/activitypub/apmodels"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )

@@ -8,8 +8,8 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/config"
 	"github.com/go-fed/httpsig"
-	"github.com/owncast/owncast/config"
 	log "github.com/sirupsen/logrus"
 )
 

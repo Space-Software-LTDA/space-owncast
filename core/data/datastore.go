@@ -7,9 +7,9 @@ import (
 	"sync"
 
 	// sqlite requires a blank import.
+	"github.com/Space-Software-LTDA/owncast/db"
+	"github.com/Space-Software-LTDA/owncast/models"
 	_ "github.com/mattn/go-sqlite3"
-	"github.com/owncast/owncast/db"
-	"github.com/owncast/owncast/models"
 	log "github.com/sirupsen/logrus"
 )
 

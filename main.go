@@ -5,16 +5,16 @@ import (
 	"os"
 	"strconv"
 
-	"github.com/owncast/owncast/logging"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/logging"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	log "github.com/sirupsen/logrus"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/metrics"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/router"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/metrics"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/router"
 )
 
 var (
@@ -33,6 +33,7 @@ var (
 
 // nolint:cyclop
 func main() {
+	println("Hello")
 	flag.Parse()
 
 	if *logDirectory != "" {

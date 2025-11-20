@@ -4,9 +4,9 @@ import (
 	"sync"
 	"time"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/webhookrepository"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/webhookrepository"
 )
 
 // BaseWebhookData contains common fields shared across all webhook event data.

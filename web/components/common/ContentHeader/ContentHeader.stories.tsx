@@ -18,7 +18,7 @@ export const Example = {
     links: [
       {
         platform: 'github',
-        url: 'https://github.com/owncast/owncast',
+        url: 'https://github.com/Space-Software-LTDA/owncast',
         icon: 'https://watch.owncast.online/img/platformlogos/github.svg',
       },
       {
@@ -59,7 +59,7 @@ export const LongContent = {
     links: [
       {
         platform: 'github',
-        url: 'https://github.com/owncast/owncast',
+        url: 'https://github.com/Space-Software-LTDA/owncast',
         icon: 'https://watch.owncast.online/img/platformlogos/github.svg',
       },
       {

@@ -3,8 +3,8 @@ package configrepository
 import (
 	"strings"
 
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
 	log "github.com/sirupsen/logrus"
 )
 

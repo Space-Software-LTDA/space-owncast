@@ -5,9 +5,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	"github.com/jellydator/ttlcache/v3"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/utils"
 )
 
 const (

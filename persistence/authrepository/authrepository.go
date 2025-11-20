@@ -3,7 +3,7 @@ package authrepository
 import (
 	"database/sql"
 
-	"github.com/owncast/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
 )
 
 type AuthRepository interface {

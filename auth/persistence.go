@@ -1,7 +1,7 @@
 package auth
 
 import (
-	"github.com/owncast/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/core/data"
 )
 
 var _datastore *data.Datastore

@@ -4,11 +4,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/owncast/owncast/activitypub/apmodels"
-	"github.com/owncast/owncast/activitypub/crypto"
-	"github.com/owncast/owncast/activitypub/persistence"
-	"github.com/owncast/owncast/activitypub/requests"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/activitypub/crypto"
+	"github.com/Space-Software-LTDA/owncast/activitypub/persistence"
+	"github.com/Space-Software-LTDA/owncast/activitypub/requests"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -5,8 +5,8 @@ import (
 	"database/sql"
 	"log"
 
-	"github.com/owncast/owncast/db"
-	"github.com/owncast/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/db"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
 )
 
 // CreateBanIPTable will create the IP ban table if needed.

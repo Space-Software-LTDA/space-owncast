@@ -11,11 +11,11 @@ import (
 
 	"github.com/pkg/errors"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/activitypub/persistence"
+	"github.com/Space-Software-LTDA/owncast/activitypub/resolvers"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	"github.com/go-fed/httpsig"
-	"github.com/owncast/owncast/activitypub/apmodels"
-	"github.com/owncast/owncast/activitypub/persistence"
-	"github.com/owncast/owncast/activitypub/resolvers"
-	"github.com/owncast/owncast/persistence/configrepository"
 
 	log "github.com/sirupsen/logrus"
 )

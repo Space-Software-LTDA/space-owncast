@@ -4,9 +4,9 @@ import (
 	"net/http"
 	"net/url"
 
-	ia "github.com/owncast/owncast/auth/indieauth"
-	"github.com/owncast/owncast/webserver/router/middleware"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	ia "github.com/Space-Software-LTDA/owncast/auth/indieauth"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // HandleAuthEndpoint will handle the IndieAuth auth endpoint.

@@ -3,11 +3,11 @@ package admin
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/activitypub"
-	"github.com/owncast/owncast/activitypub/outbox"
-	"github.com/owncast/owncast/activitypub/persistence"
-	"github.com/owncast/owncast/persistence/configrepository"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub"
+	"github.com/Space-Software-LTDA/owncast/activitypub/outbox"
+	"github.com/Space-Software-LTDA/owncast/activitypub/persistence"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // SendFederatedMessage will send a manual message to the fediverse.
@@ -179,7 +179,7 @@ func SetFederationBlockDomains(w http.ResponseWriter, r *http.Request) {
 func GetFederatedActions(page int, pageSize int, w http.ResponseWriter, r *http.Request) {
 	offset := pageSize * page
 
-	activities, total, err := persistence.GetInboundActivities(pageSize, offset)
+	activities, total, err := persistence.GetInboundActivities(int32(pageSize), int32(offset))
 	if err != nil {
 		webutils.WriteSimpleResponse(w, false, err.Error())
 		return

@@ -4,9 +4,9 @@ import (
 	"os"
 	"testing"
 
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 func TestMain(m *testing.M) {

@@ -43,7 +43,7 @@
   // This coincides with the tablet breakpoint, but god knows what exactly
   // the issue is. Since it's just a design element, just hide the logo on
   // those smaller screens. For more information, see
-  // https://github.com/owncast/owncast/pull/2592
+  // https://github.com/Space-Software-LTDA/owncast/pull/2592
   @include screen(tablet) {
     display: none;
   }

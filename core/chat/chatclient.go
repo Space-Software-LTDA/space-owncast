@@ -10,12 +10,12 @@ import (
 	log "github.com/sirupsen/logrus"
 	"golang.org/x/time/rate"
 
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/chat/events"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/services/geoip"
 	"github.com/gorilla/websocket"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/chat/events"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/services/geoip"
 )
 
 // Client represents a single chat client.

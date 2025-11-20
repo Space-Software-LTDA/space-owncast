@@ -10,11 +10,11 @@ import (
 	"github.com/nareix/joy5/format/flv/flvio"
 	log "github.com/sirupsen/logrus"
 
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
 	"github.com/nareix/joy5/format/rtmp"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/webserver/handlers/generated"
 )
 
 var _hasInboundRTMPConnection = false

@@ -11,14 +11,14 @@ import (
 	"strings"
 	"time"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core"
-	"github.com/owncast/owncast/core/cache"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/static"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/router/middleware"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core"
+	"github.com/Space-Software-LTDA/owncast/core/cache"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/static"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 	log "github.com/sirupsen/logrus"
 )
 

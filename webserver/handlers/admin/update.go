@@ -9,8 +9,8 @@ import (
 	"strconv"
 	"strings"
 
-	"github.com/owncast/owncast/config"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/config"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 	log "github.com/sirupsen/logrus"
 )
 

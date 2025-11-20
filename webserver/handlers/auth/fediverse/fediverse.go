@@ -5,14 +5,14 @@ import (
 	"fmt"
 	"net/http"
 
-	"github.com/owncast/owncast/activitypub"
-	fediverseauth "github.com/owncast/owncast/auth/fediverse"
-	"github.com/owncast/owncast/core/chat"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/userrepository"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub"
+	fediverseauth "github.com/Space-Software-LTDA/owncast/auth/fediverse"
+	"github.com/Space-Software-LTDA/owncast/core/chat"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/userrepository"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 	log "github.com/sirupsen/logrus"
 )
 

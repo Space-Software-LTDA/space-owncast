@@ -3,7 +3,7 @@ package logging
 import (
 	"path/filepath"
 
-	"github.com/owncast/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/config"
 )
 
 // GetTranscoderLogFilePath returns the logging path for the transcoder log output.

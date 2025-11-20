@@ -9,14 +9,14 @@
 set -o pipefail
 
 releases=(
-	"https://github.com/owncast/owncast/releases/download/v0.0.6/owncast-0.0.6-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.7/owncast-0.0.7-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.8/owncast-0.0.8-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.9/owncast-0.0.9-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.10/owncast-0.0.10-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.11/owncast-0.0.11-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.12/owncast-0.0.12-linux-64bit.zip"
-	"https://github.com/owncast/owncast/releases/download/v0.0.13/owncast-0.0.13-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.6/owncast-0.0.6-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.7/owncast-0.0.7-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.8/owncast-0.0.8-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.9/owncast-0.0.9-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.10/owncast-0.0.10-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.11/owncast-0.0.11-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.12/owncast-0.0.12-linux-64bit.zip"
+	"https://github.com/Space-Software-LTDA/owncast/releases/download/v0.0.13/owncast-0.0.13-linux-64bit.zip"
 )
 
 echo "--------------------------------------------"
@@ -51,7 +51,7 @@ test_release() {
 build_development() {
 	echo "Building test release from current development branch..."
 	cd src || exit
-	git clone https://github.com/owncast/owncast
+	git clone https://github.com/Space-Software-LTDA/owncast
 	cd owncast || exit
 	earthly +package --platform="linux/amd64"
 	mv dist/owncast-develop-linux-64bit.zip ../../releases/owncast-develop-linux-64bit.zip

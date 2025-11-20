@@ -3,10 +3,10 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/webserver/handlers/auth/fediverse"
-	"github.com/owncast/owncast/webserver/handlers/auth/indieauth"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	"github.com/owncast/owncast/webserver/router/middleware"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/auth/fediverse"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/auth/indieauth"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 )
 
 func (*ServerInterfaceImpl) StartIndieAuthFlow(w http.ResponseWriter, r *http.Request, params generated.StartIndieAuthFlowParams) {

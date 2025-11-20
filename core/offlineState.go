@@ -5,10 +5,10 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/static"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	"github.com/grafov/m3u8"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/static"
-	"github.com/owncast/owncast/utils"
 	log "github.com/sirupsen/logrus"
 )
 

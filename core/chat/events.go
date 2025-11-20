@@ -6,13 +6,13 @@ import (
 	"strings"
 	"time"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/chat/events"
-	"github.com/owncast/owncast/core/webhooks"
-	"github.com/owncast/owncast/persistence/chatmessagerepository"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/userrepository"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/chat/events"
+	"github.com/Space-Software-LTDA/owncast/core/webhooks"
+	"github.com/Space-Software-LTDA/owncast/persistence/chatmessagerepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/userrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	log "github.com/sirupsen/logrus"
 )
 

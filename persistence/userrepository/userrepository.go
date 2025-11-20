@@ -8,12 +8,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/db"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/db"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	"github.com/pkg/errors"
 	"github.com/teris-io/shortid"
 
@@ -29,6 +29,7 @@ type UserRepository interface {
 	GetExternalAPIUser() ([]models.ExternalAPIUser, error)
 	GetExternalAPIUserForAccessTokenAndScope(token string, scope string) (*models.ExternalAPIUser, error)
 	GetModeratorUsers() []*models.User
+	GetUserByEmail(email string) *models.User
 	GetUserByID(id string) *models.User
 	GetUserByToken(token string) *models.User
 	InsertExternalAPIUser(token string, name string, color int, scopes []string) error
@@ -97,12 +98,13 @@ func (r *SqlUserRepository) CreateAnonymousUser(displayName string) (*models.Use
 		return nil, "", err
 	}
 
-	// Assign it an access token.
 	accessToken, err := utils.GenerateAccessToken()
 	if err != nil {
 		log.Errorln("Unable to create access token for new user")
 		return nil, "", err
 	}
+
+	// Assign it an access token.
 	if err := r.addAccessTokenForUser(accessToken, id); err != nil {
 		return nil, "", errors.Wrap(err, "unable to save access token for new user")
 	}
@@ -144,7 +146,7 @@ func (r *SqlUserRepository) ChangeUserColor(userID string, color int) error {
 	defer r.datastore.DbLock.Unlock()
 
 	if err := r.datastore.GetQueries().ChangeDisplayColor(context.Background(), db.ChangeDisplayColorParams{
-		DisplayColor: color,
+		DisplayColor: int32(color),
 		ID:           userID,
 	}); err != nil {
 		return errors.Wrap(err, "unable to change display color")
@@ -172,13 +174,18 @@ func (r *SqlUserRepository) create(user *models.User) error {
 		_ = tx.Rollback()
 	}()
 
-	stmt, err := tx.Prepare("INSERT INTO users(id, display_name, display_color, previous_names, created_at) values(?, ?, ?, ?, ?)")
+	stmt, err := tx.Prepare("INSERT INTO users(id, display_name, email, display_color, previous_names, created_at) values(?, ?, ?, ?, ?, ?)")
 	if err != nil {
 		log.Debugln(err)
+		return err
 	}
 	defer stmt.Close()
 
-	_, err = stmt.Exec(user.ID, user.DisplayName, user.DisplayColor, user.DisplayName, user.CreatedAt)
+	if stmt == nil {
+		return errors.New("unable to prepare statement for creating user")
+	}
+
+	_, err = stmt.Exec(user.ID, user.DisplayName, user.Email, user.DisplayColor, user.DisplayName, user.CreatedAt)
 	if err != nil {
 		log.Errorln("error creating new user", err)
 		return err
@@ -217,6 +224,41 @@ func (r *SqlUserRepository) SetEnabled(userID string, enabled bool) error {
 	}
 
 	return tx.Commit()
+}
+
+func (r *SqlUserRepository) GetUserByEmail(email string) *models.User {
+	u, err := r.datastore.GetQueries().GetUserByEmail(context.Background(), email)
+	if err != nil {
+		return nil
+	}
+
+	var scopes []string
+	if u.Scopes.Valid {
+		scopes = strings.Split(u.Scopes.String, ",")
+	}
+
+	var disabledAt *time.Time
+	if u.DisabledAt.Valid {
+		disabledAt = &u.DisabledAt.Time
+	}
+
+	var authenticatedAt *time.Time
+	if u.AuthenticatedAt.Valid {
+		authenticatedAt = &u.AuthenticatedAt.Time
+	}
+
+	return &models.User{
+		ID:              u.ID,
+		DisplayName:     u.DisplayName,
+		DisplayColor:    int(u.DisplayColor),
+		CreatedAt:       u.CreatedAt.Time,
+		DisabledAt:      disabledAt,
+		PreviousNames:   strings.Split(u.PreviousNames.String, ","),
+		NameChangedAt:   &u.NamechangedAt.Time,
+		AuthenticatedAt: authenticatedAt,
+		Authenticated:   authenticatedAt != nil,
+		Scopes:          scopes,
+	}
 }
 
 // GetUserByToken will return a user by an access token.

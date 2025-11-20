@@ -3,11 +3,11 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/webserver/handlers/admin"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	"github.com/owncast/owncast/webserver/router/middleware"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/admin"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 
-	"github.com/owncast/owncast/yp"
+	"github.com/Space-Software-LTDA/owncast/yp"
 )
 
 type ServerInterfaceImpl struct{}

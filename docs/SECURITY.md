@@ -10,7 +10,7 @@ The latest version of Owncast is seen as the supported version. As a small proje
 
 ## Reporting a Vulnerability
 
-To report a security issue with Owncast, [open an issue](https://github.com/owncast/owncast/issues/new
+To report a security issue with Owncast, [open an issue](https://github.com/Space-Software-LTDA/owncast/issues/new
 ) on the Owncast GitHub repository and *do not* mention vulnerability details in the issue. If you have a preferred next step on where to discuss the details of the disclosure, please mention that in the issue if it's appropriate for those details to be public.
 
 You may optionally [email Gabe](mailto:gabek@real-ity.com) to alert him directly and provide specifics on how you wish to disclose the details of the issue.

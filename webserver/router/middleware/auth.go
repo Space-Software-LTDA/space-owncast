@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/authrepository"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/userrepository"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/authrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/userrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	log "github.com/sirupsen/logrus"
 )
 

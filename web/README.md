@@ -19,7 +19,7 @@ isolation.
 
 ## Contribute
 
-1. Find a component that hasn't yet been worked on by looking through the [UIv2 milestone](https://github.com/owncast/owncast/milestone/18) and the sidebar of components in storybook.
+1. Find a component that hasn't yet been worked on by looking through the [UIv2 milestone](https://github.com/Space-Software-LTDA/owncast/milestone/18) and the sidebar of components in storybook.
 1. See if you can have an example of this functionality in action via the [Owncast Demo Server](https://watch.owncast.online) or [Owncast Nightly Build](https://nightly.owncast.online) so you know how it's supposed to work if it's interactive.
 1. Visit the `Docs` tab to read any specific documentation that may have been written about how this component works.
 1. Go to the `Canvas` tab of the component you selected and see if there's a Design attached to it.

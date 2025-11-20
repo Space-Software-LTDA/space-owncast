@@ -14,7 +14,7 @@ export const Populated = {
     links: [
       {
         platform: 'github',
-        url: 'https://github.com/owncast/owncast',
+        url: 'https://github.com/Space-Software-LTDA/owncast',
         icon: '/img/platformlogos/github.svg',
       },
       {

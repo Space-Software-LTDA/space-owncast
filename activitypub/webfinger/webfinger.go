@@ -8,7 +8,7 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 // GetWebfingerLinks will return webfinger data for an account.

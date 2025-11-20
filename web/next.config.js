@@ -79,7 +79,7 @@ module.exports = async phase => {
 
           return config;
         },
-        pageExtensions: ['tsx'],
+        pageExtensions: ['tsx', 'ts'],
       }),
     ),
   );

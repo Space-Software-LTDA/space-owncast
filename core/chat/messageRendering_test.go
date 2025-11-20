@@ -3,7 +3,7 @@ package chat
 import (
 	"testing"
 
-	"github.com/owncast/owncast/core/chat/events"
+	"github.com/Space-Software-LTDA/owncast/core/chat/events"
 )
 
 // Test a bunch of arbitrary markup and markdown to make sure we get sanitized

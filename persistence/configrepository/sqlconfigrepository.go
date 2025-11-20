@@ -7,12 +7,12 @@ import (
 	"strings"
 	"time"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/static"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/static"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )

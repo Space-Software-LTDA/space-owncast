@@ -27,7 +27,7 @@ export const Footer: FC = () => {
         <a href="https://owncast.online/help" target="_blank" rel="noreferrer">
           {t(Localization.Frontend.Footer.contribute)}
         </a>
-        <a href="https://github.com/owncast/owncast" target="_blank" rel="noreferrer">
+        <a href="https://github.com/Space-Software-LTDA/owncast" target="_blank" rel="noreferrer">
           {t(Localization.Frontend.Footer.source)}
         </a>
       </span>

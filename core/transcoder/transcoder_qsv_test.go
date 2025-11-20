@@ -4,7 +4,7 @@ import (
 	"path/filepath"
 	"testing"
 
-	"github.com/owncast/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/models"
 )
 
 func TestFFmpegQuicksyncCommand(t *testing.T) {

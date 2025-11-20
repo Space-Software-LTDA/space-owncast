@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/owncast/owncast/services/geoip"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/services/geoip"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 // ConnectedClientsResponse is the response of the currently connected chat clients.

@@ -3,10 +3,10 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/core/rtmp"
-	"github.com/owncast/owncast/webserver/handlers/admin"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	"github.com/owncast/owncast/webserver/router/middleware"
+	"github.com/Space-Software-LTDA/owncast/core/rtmp"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/admin"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 )
 
 func (*ServerInterfaceImpl) StatusAdmin(w http.ResponseWriter, r *http.Request) {

@@ -237,7 +237,7 @@ export const ChatContainer: FC<ChatContainerProps> = ({
 
   // This is a hack to force a scroll to the very bottom of the chat messages
   // on initial mount of the component.
-  // For https://github.com/owncast/owncast/issues/2500
+  // For https://github.com/Space-Software-LTDA/owncast/issues/2500
   useEffect(() => {
     setTimeout(() => {
       scrollChatToBottom(chatContainerRef);

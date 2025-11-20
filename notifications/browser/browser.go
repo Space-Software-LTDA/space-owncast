@@ -4,7 +4,7 @@ import (
 	"encoding/json"
 
 	"github.com/SherClockHolmes/webpush-go"
-	"github.com/owncast/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/core/data"
 	"github.com/pkg/errors"
 )
 

@@ -4,15 +4,15 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/db"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/tables"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/db"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/tables"
 
-	"github.com/owncast/owncast/notifications/browser"
-	"github.com/owncast/owncast/notifications/discord"
+	"github.com/Space-Software-LTDA/owncast/notifications/browser"
+	"github.com/Space-Software-LTDA/owncast/notifications/discord"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )

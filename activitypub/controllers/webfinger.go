@@ -5,9 +5,9 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/owncast/owncast/activitypub/apmodels"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	log "github.com/sirupsen/logrus"
 )
 

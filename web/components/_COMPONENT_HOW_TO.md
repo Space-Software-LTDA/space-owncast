@@ -62,7 +62,7 @@ export const MyNewButton: FC<MyNewButtonProps> = ({ label, onClick }) => {
 Since there's a lot of ways to create components, settling on one pattern helps maintain readability.
 But why _this_ style?
 
-See the discussion on the PR that introduced this pattern: [#2082](https://github.com/owncast/owncast/pull/2082).
+See the discussion on the PR that introduced this pattern: [#2082](https://github.com/Space-Software-LTDA/owncast/pull/2082).
 
 ## Error Boundaries
 

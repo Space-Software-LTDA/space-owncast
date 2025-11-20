@@ -3,8 +3,8 @@ package webhooks
 import (
 	"time"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	"github.com/teris-io/shortid"
 )
 

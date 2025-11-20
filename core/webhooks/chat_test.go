@@ -7,10 +7,10 @@ import (
 	"testing"
 	"time"
 
-	"github.com/owncast/owncast/core/chat/events"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/webhookrepository"
+	"github.com/Space-Software-LTDA/owncast/core/chat/events"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/webhookrepository"
 )
 
 func TestSendChatEvent(t *testing.T) {

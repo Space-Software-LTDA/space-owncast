@@ -6,11 +6,11 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/crypto"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	"github.com/go-fed/activity/streams"
 	"github.com/go-fed/activity/streams/vocab"
-	"github.com/owncast/owncast/activitypub/crypto"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/configrepository"
 	log "github.com/sirupsen/logrus"
 )
 

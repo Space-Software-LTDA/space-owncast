@@ -7,10 +7,10 @@ import (
 	"os"
 	"path/filepath"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // UploadCustomEmoji allows POSTing a new custom emoji to the server.

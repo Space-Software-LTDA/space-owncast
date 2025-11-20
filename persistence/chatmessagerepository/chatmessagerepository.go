@@ -7,9 +7,9 @@ import (
 	"strings"
 	"time"
 
-	"github.com/owncast/owncast/core/chat/events"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/core/chat/events"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/models"
 
 	log "github.com/sirupsen/logrus"
 )

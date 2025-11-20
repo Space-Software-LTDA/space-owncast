@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"sort"
 
-	"github.com/owncast/owncast/persistence/configrepository"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 type variantsSort struct {

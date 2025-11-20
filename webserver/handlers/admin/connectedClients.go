@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/owncast/owncast/core/chat"
-	"github.com/owncast/owncast/models"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/core/chat"
+	"github.com/Space-Software-LTDA/owncast/models"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // GetConnectedChatClients returns currently connected clients.

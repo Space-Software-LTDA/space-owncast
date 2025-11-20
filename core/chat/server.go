@@ -11,15 +11,15 @@ import (
 
 	"github.com/gorilla/websocket"
 
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/chat/events"
-	"github.com/owncast/owncast/core/webhooks"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/authrepository"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/persistence/userrepository"
-	"github.com/owncast/owncast/services/geoip"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/chat/events"
+	"github.com/Space-Software-LTDA/owncast/core/webhooks"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/authrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/userrepository"
+	"github.com/Space-Software-LTDA/owncast/services/geoip"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 var _server *Server

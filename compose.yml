@@ -1,0 +1,22 @@
+services:
+  owncast:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+      - "1935:1935"
+    volumes:
+      - data:/app/data
+    environment:
+      - VERSION=dev
+      - GIT_COMMIT=${GIT_COMMIT}
+      - NAME=docker
+    restart: unless-stopped
+
+volumes:
+  data:
+
+networks:
+  default:
+    driver: bridge

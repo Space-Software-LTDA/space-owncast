@@ -1,6 +1,6 @@
 package models
 
-import "github.com/owncast/owncast/utils"
+import "github.com/Space-Software-LTDA/owncast/utils"
 
 // Follower is our internal representation of a single follower within Owncast.
 type Follower struct {

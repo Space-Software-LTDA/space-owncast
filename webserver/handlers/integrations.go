@@ -3,10 +3,10 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/webserver/handlers/admin"
-	"github.com/owncast/owncast/webserver/handlers/moderation"
-	"github.com/owncast/owncast/webserver/router/middleware"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/admin"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/moderation"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 	"github.com/prometheus/client_golang/prometheus/promhttp"
 )
 

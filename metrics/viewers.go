@@ -3,11 +3,11 @@ package metrics
 import (
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/core"
+	"github.com/Space-Software-LTDA/owncast/core/chat"
+	"github.com/Space-Software-LTDA/owncast/persistence/chatmessagerepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/userrepository"
 	"github.com/nakabonne/tstorage"
-	"github.com/owncast/owncast/core"
-	"github.com/owncast/owncast/core/chat"
-	"github.com/owncast/owncast/persistence/chatmessagerepository"
-	"github.com/owncast/owncast/persistence/userrepository"
 	log "github.com/sirupsen/logrus"
 )
 

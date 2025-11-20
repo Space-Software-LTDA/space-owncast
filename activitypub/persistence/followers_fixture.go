@@ -8,7 +8,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/owncast/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/models"
 	log "github.com/sirupsen/logrus"
 )
 

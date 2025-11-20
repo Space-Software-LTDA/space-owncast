@@ -3,9 +3,9 @@ package configrepository
 import (
 	"time"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/handlers/generated"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
 )
 
 type ConfigRepository interface {

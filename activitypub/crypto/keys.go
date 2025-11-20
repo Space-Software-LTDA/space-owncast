@@ -8,7 +8,7 @@ import (
 	"errors"
 	"net/url"
 
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	log "github.com/sirupsen/logrus"
 )
 

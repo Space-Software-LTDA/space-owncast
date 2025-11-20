@@ -7,17 +7,17 @@ import (
 
 	log "github.com/sirupsen/logrus"
 
-	"github.com/owncast/owncast/activitypub"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/chat"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/core/rtmp"
-	"github.com/owncast/owncast/core/transcoder"
-	"github.com/owncast/owncast/core/webhooks"
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/notifications"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/chat"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/core/rtmp"
+	"github.com/Space-Software-LTDA/owncast/core/transcoder"
+	"github.com/Space-Software-LTDA/owncast/core/webhooks"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/notifications"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 // After the stream goes offline this timer fires a full cleanup after N min.

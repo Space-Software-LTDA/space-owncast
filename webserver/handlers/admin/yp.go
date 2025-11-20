@@ -3,8 +3,8 @@ package admin
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/persistence/configrepository"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 	log "github.com/sirupsen/logrus"
 )
 

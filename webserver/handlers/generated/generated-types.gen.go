@@ -831,6 +831,7 @@ type UpdateMessageVisibilityParams struct {
 // RegisterAnonymousChatUserJSONBody defines parameters for RegisterAnonymousChatUser.
 type RegisterAnonymousChatUserJSONBody struct {
 	DisplayName *string `json:"displayName,omitempty"`
+	Email       *string `json:"email,omitempty"`
 }
 
 // RegisterAnonymousChatUserParams defines parameters for RegisterAnonymousChatUser.

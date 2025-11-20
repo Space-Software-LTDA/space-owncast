@@ -3,7 +3,7 @@ package indieauth
 import (
 	"testing"
 
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 func TestLimitGlobalPendingRequests(t *testing.T) {

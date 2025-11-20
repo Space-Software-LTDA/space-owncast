@@ -11,8 +11,8 @@ import (
 	"sync"
 	"time"
 
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )

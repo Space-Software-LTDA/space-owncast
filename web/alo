@@ -1,0 +1,2 @@
+error loading swagger spec in openapi.yaml
+: failed to load OpenAPI specification: open openapi.yaml: no such file or directory

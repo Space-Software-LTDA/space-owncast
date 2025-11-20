@@ -7,10 +7,10 @@ import (
 	"net/http"
 	"net/url"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/crypto"
+	"github.com/Space-Software-LTDA/owncast/config"
 	"github.com/go-fed/activity/streams"
 	"github.com/go-fed/activity/streams/vocab"
-	"github.com/owncast/owncast/activitypub/crypto"
-	"github.com/owncast/owncast/config"
 
 	log "github.com/sirupsen/logrus"
 )

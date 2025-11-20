@@ -4,8 +4,8 @@ import (
 	"net/http"
 	"strings"
 
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 // RequireActivityPubOrRedirect will validate the requested content types and

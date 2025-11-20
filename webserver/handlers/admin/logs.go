@@ -5,7 +5,7 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/owncast/owncast/logging"
+	"github.com/Space-Software-LTDA/owncast/logging"
 	log "github.com/sirupsen/logrus"
 )
 

@@ -3,8 +3,8 @@ package rtmp
 import (
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/models"
 	"github.com/nareix/joy5/format/flv/flvio"
-	"github.com/owncast/owncast/models"
 	log "github.com/sirupsen/logrus"
 )
 

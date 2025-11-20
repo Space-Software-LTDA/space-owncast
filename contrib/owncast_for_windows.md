@@ -79,4 +79,4 @@ Example in OBS-Studio ->
 - [Windows Subsystem for Linux](https://learn.microsoft.com/en-us/windows/wsl/)
 - [Owncast development documentation](https://owncast.online/development/)
 - [Owncast quickstart guide](https://owncast.online/quickstart/)
-- [Owncast README](https://github.com/owncast/owncast/blob/develop/README.md#building-from-source)
+- [Owncast README](https://github.com/Space-Software-LTDA/owncast/blob/develop/README.md#building-from-source)

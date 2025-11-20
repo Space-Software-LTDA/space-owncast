@@ -4,11 +4,11 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/owncast/owncast/activitypub/persistence"
-	"github.com/owncast/owncast/activitypub/requests"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub/persistence"
+	"github.com/Space-Software-LTDA/owncast/activitypub/requests"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // ApproveFollower will approve a federated follow request.

@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	"github.com/pkg/errors"
 	"github.com/teris-io/shortid"
 )

@@ -10,8 +10,8 @@ import (
 	"sync"
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/utils"
 	rotatelogs "github.com/lestrrat-go/file-rotatelogs"
-	"github.com/owncast/owncast/utils"
 	"github.com/rifflock/lfshook"
 	log "github.com/sirupsen/logrus"
 )

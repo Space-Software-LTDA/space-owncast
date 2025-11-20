@@ -3,7 +3,7 @@ package handlers
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/static"
+	"github.com/Space-Software-LTDA/owncast/static"
 )
 
 var staticServer = http.FileServer(http.FS(static.GetWeb()))

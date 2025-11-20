@@ -3,10 +3,10 @@ package admin
 import (
 	"net/http"
 
-	"github.com/owncast/owncast/core"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/core"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 
-	"github.com/owncast/owncast/core/rtmp"
+	"github.com/Space-Software-LTDA/owncast/core/rtmp"
 )
 
 // DisconnectInboundConnection will force-disconnect an inbound stream.

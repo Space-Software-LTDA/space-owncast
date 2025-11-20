@@ -3,7 +3,7 @@ package inbox
 import (
 	"runtime"
 
-	"github.com/owncast/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
 	log "github.com/sirupsen/logrus"
 )
 

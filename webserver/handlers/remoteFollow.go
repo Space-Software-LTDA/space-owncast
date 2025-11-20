@@ -7,10 +7,10 @@ import (
 	"net/url"
 	"strings"
 
-	"github.com/owncast/owncast/activitypub/webfinger"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/activitypub/webfinger"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // RemoteFollow handles a request to begin the remote follow redirect flow.

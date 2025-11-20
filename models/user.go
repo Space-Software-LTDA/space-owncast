@@ -3,7 +3,7 @@ package models
 import (
 	"time"
 
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 const (
@@ -17,6 +17,7 @@ type User struct {
 	AuthenticatedAt *time.Time `json:"-"`
 	ID              string     `json:"id"`
 	DisplayName     string     `json:"displayName"`
+	Email           string     `json:"email"`
 	PreviousNames   []string   `json:"previousNames"`
 	Scopes          []string   `json:"scopes,omitempty"`
 	DisplayColor    int        `json:"displayColor"`

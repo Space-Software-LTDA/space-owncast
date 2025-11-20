@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 const (

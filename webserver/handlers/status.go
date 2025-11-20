@@ -5,11 +5,11 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/owncast/owncast/core"
-	"github.com/owncast/owncast/persistence/configrepository"
-	"github.com/owncast/owncast/utils"
-	"github.com/owncast/owncast/webserver/router/middleware"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/core"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 // GetStatus gets the status of the server.

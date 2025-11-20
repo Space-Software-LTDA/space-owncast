@@ -1,7 +1,7 @@
 package models
 
 import (
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/utils"
 )
 
 // Stats holds the stats for the system.

@@ -3,7 +3,7 @@ package tables
 import (
 	"database/sql"
 
-	"github.com/owncast/owncast/utils"
+	"github.com/Space-Software-LTDA/owncast/utils"
 	log "github.com/sirupsen/logrus"
 )
 

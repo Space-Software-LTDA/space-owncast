@@ -13,13 +13,13 @@ import (
 	"golang.org/x/net/http2"
 	"golang.org/x/net/http2/h2c"
 
-	"github.com/owncast/owncast/activitypub"
-	aphandlers "github.com/owncast/owncast/activitypub/controllers"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/chat"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/webserver/handlers"
-	"github.com/owncast/owncast/webserver/router/middleware"
+	"github.com/Space-Software-LTDA/owncast/activitypub"
+	aphandlers "github.com/Space-Software-LTDA/owncast/activitypub/controllers"
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/chat"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers"
+	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 )
 
 // Start starts the router for the http, ws, and rtmp.

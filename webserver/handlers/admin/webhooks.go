@@ -6,10 +6,10 @@ import (
 	"net/http"
 	"time"
 
-	"github.com/owncast/owncast/models"
-	"github.com/owncast/owncast/persistence/webhookrepository"
-	"github.com/owncast/owncast/webserver/handlers/generated"
-	webutils "github.com/owncast/owncast/webserver/utils"
+	"github.com/Space-Software-LTDA/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/persistence/webhookrepository"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/generated"
+	webutils "github.com/Space-Software-LTDA/owncast/webserver/utils"
 )
 
 type createWebhookRequest struct {

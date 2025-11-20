@@ -5,9 +5,9 @@ import (
 	"os"
 	"path/filepath"
 
+	"github.com/Space-Software-LTDA/owncast/config"
+	"github.com/Space-Software-LTDA/owncast/core/playlist"
 	"github.com/grafov/m3u8"
-	"github.com/owncast/owncast/config"
-	"github.com/owncast/owncast/core/playlist"
 
 	log "github.com/sirupsen/logrus"
 )

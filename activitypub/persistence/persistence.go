@@ -8,13 +8,13 @@ import (
 	"net/url"
 	"time"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/activitypub/resolvers"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/db"
+	"github.com/Space-Software-LTDA/owncast/models"
 	"github.com/go-fed/activity/streams"
 	"github.com/go-fed/activity/streams/vocab"
-	"github.com/owncast/owncast/activitypub/apmodels"
-	"github.com/owncast/owncast/activitypub/resolvers"
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/db"
-	"github.com/owncast/owncast/models"
 	"github.com/pkg/errors"
 
 	log "github.com/sirupsen/logrus"
@@ -255,7 +255,7 @@ func GetOutboxPostCount() (int64, error) {
 }
 
 // GetOutbox will return an instance of the outbox populated by stored items.
-func GetOutbox(limit int, offset int) (vocab.ActivityStreamsOrderedCollection, error) {
+func GetOutbox(limit int32, offset int32) (vocab.ActivityStreamsOrderedCollection, error) {
 	collection := streams.NewActivityStreamsOrderedCollection()
 	orderedItems := streams.NewActivityStreamsOrderedItemsProperty()
 	rows, err := _datastore.GetQueries().GetOutboxWithOffset(
@@ -329,7 +329,7 @@ func SaveInboundFediverseActivity(objectIRI string, actorIRI string, eventType s
 
 // GetInboundActivities will return a collection of saved, federated activities
 // limited and offset by the values provided to support pagination.
-func GetInboundActivities(limit int, offset int) ([]models.FederatedActivity, int, error) {
+func GetInboundActivities(limit int32, offset int32) ([]models.FederatedActivity, int, error) {
 	ctx := context.Background()
 	rows, err := _datastore.GetQueries().GetInboundActivitiesWithOffset(ctx, db.GetInboundActivitiesWithOffsetParams{
 		Limit:  limit,

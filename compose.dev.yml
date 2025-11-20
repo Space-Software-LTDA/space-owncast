@@ -1,0 +1,46 @@
+services:
+  backend:
+    image: golang:alpine
+    working_dir: /app
+    command: sh -c "apk add --no-cache git gcc build-base linux-headers ffmpeg ffmpeg-libs ca-certificates && go install github.com/air-verse/air@latest && air"
+    ports:
+      - "8080:8080"
+      - "1935:1935"
+    volumes:
+      - .:/app
+      - go-modules:/go/pkg/mod
+      - data:/app/data
+    environment:
+      - VERSION=dev
+      - GIT_COMMIT=${GIT_COMMIT:-local}
+      - NAME=docker-dev
+      - CGO_ENABLED=1
+    restart: unless-stopped
+    networks:
+      - owncast-dev
+
+  frontend:
+    image: node:20-alpine
+    working_dir: /app
+    command: sh -c "npm ci && npm run dev"
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./web:/app
+      - node-modules:/app/node_modules
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - backend
+    restart: unless-stopped
+    networks:
+      - owncast-dev
+
+volumes:
+  go-modules:
+  node-modules:
+  data:
+
+networks:
+  owncast-dev:
+    driver: bridge

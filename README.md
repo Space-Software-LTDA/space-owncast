@@ -1,5 +1,5 @@
 <p align="center">
-  <a href="https://github.com/owncast/owncast" alt="Owncast">
+  <a href="https://github.com/Space-Software-LTDA/owncast" alt="Owncast">
     <img src="https://owncast.online/images/logo.png" alt="Owncast Logo" width="200">
   </a>
 </p>
@@ -11,7 +11,7 @@
 <br/>
 
 <p align="center">
-	<a href="https://github.com/owncast/owncast/blob/develop/LICENSE">
+	<a href="https://github.com/Space-Software-LTDA/owncast/blob/develop/LICENSE">
     <img src="https://img.shields.io/badge/License-MIT-green.svg" alt="License" />
   </a>
 </p>
@@ -25,7 +25,7 @@
 	·
 	<a href="https://owncast.online/faq/">FAQ</a>
 	·
-	<a href="https://github.com/owncast/owncast/issues">Report Bug</a>
+	<a href="https://github.com/Space-Software-LTDA/owncast/issues">Report Bug</a>
 </p>
 
 <!-- TABLE OF CONTENTS -->
@@ -61,7 +61,7 @@ Owncast is an open source, self-hosted, decentralized, single user live video st
 	  <a href="https://hub.docker.com/r/owncast/owncast">
       <img alt="Docker Pulls" src="https://img.shields.io/docker/pulls/owncast/owncast?style=for-the-badge">
 	  </a>
-    <a href="https://github.com/owncast/owncast/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">
+    <a href="https://github.com/Space-Software-LTDA/owncast/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22">
       <img alt="GitHub issues by-label" src="https://img.shields.io/github/issues-raw/owncast/owncast/good%20first%20issue?style=for-the-badge">
     </a>
     <a href="https://opencollective.com/owncast">
@@ -96,7 +96,7 @@ Owncast consists of two projects.
 
 The `develop` branch is always the most up-to-date state of development and this may not be what you always want. If you want to run the latest released stable version, check out the tag related to that release. For example, if you'd only like the source prior to the v0.1.0 development cycle you can check out the `v0.0.13` tag.
 
-> Note: Currently Owncast does not natively support Windows servers. However, Windows Users can use Windows Subsystem for Linux (WSL2) to install Owncast. For details visit [this document](https://github.com/owncast/owncast/blob/develop/contrib/owncast_for_windows.md).
+> Note: Currently Owncast does not natively support Windows servers. However, Windows Users can use Windows Subsystem for Linux (WSL2) to install Owncast. For details visit [this document](https://github.com/Space-Software-LTDA/owncast/blob/develop/contrib/owncast_for_windows.md).
 
 ### Backend
 
@@ -106,7 +106,7 @@ The Owncast backend is a service written in Go.
    - C compiler, such as [GCC compiler](https://gcc.gnu.org/install/download.html) or a [Musl-compatible compiler](https://musl.libc.org/)
    - [ffmpeg](https://ffmpeg.org/download.html)
 1. Install the [Go toolchain](https://golang.org/dl/) (1.24 or above).
-1. Clone the repo. `git clone https://github.com/owncast/owncast`
+1. Clone the repo. `git clone https://github.com/Space-Software-LTDA/owncast`
 1. `go run main.go` will run from the source.
 1. Visit `http://yourserver:8080` to access the web interface or `http://yourserver:8080/admin` to access the admin.
 1. Point your [broadcasting software](https://owncast.online/docs/broadcasting/) at your new server and start streaming.
@@ -127,7 +127,7 @@ And while we have a small team of kind, talented and thoughtful volunteers, we h
 We abide by our [Code of Conduct](https://owncast.online/contribute/) and feel strongly about open, appreciative, and empathetic people joining us.
 We’ve been very lucky to have this so far, so maybe you can help us with your skills and passion, too!
 
-If you're new to the project, maybe you'd be interested in looking at [![Good First Issue](https://img.shields.io/github/issues/owncast/owncast/good%20first%20issue.svg)](https://github.com/owncast/owncast/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
+If you're new to the project, maybe you'd be interested in looking at [![Good First Issue](https://img.shields.io/github/issues/owncast/owncast/good%20first%20issue.svg)](https://github.com/Space-Software-LTDA/owncast/issues?q=is%3Aissue+is%3Aopen+label%3A%22good+first+issue%22).
 
 There is a larger, more detailed, and more up-to-date [guide for helping contribute to Owncast on our website](https://owncast.online/help/).
 
@@ -185,4 +185,4 @@ Project chat: [Join us on Rocket.Chat](https://owncast.rocket.chat/home) if you 
 
 Gabe Kangas - [@gabek@social.gabekangas.com](https://social.gabekangas.com/gabek) - email [gabek@real-ity.com](mailto:gabek@real-ity.com)
 
-Project Link: [https://github.com/owncast/owncast](https://github.com/owncast/owncast)
+Project Link: [https://github.com/Space-Software-LTDA/owncast](https://github.com/Space-Software-LTDA/owncast)

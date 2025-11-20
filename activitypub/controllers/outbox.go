@@ -6,12 +6,12 @@ import (
 	"strconv"
 	"strings"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/activitypub/crypto"
+	"github.com/Space-Software-LTDA/owncast/activitypub/persistence"
+	"github.com/Space-Software-LTDA/owncast/activitypub/requests"
 	"github.com/go-fed/activity/streams"
 	"github.com/go-fed/activity/streams/vocab"
-	"github.com/owncast/owncast/activitypub/apmodels"
-	"github.com/owncast/owncast/activitypub/crypto"
-	"github.com/owncast/owncast/activitypub/persistence"
-	"github.com/owncast/owncast/activitypub/requests"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )
@@ -124,7 +124,7 @@ func getOutboxPage(page string, r *http.Request) (vocab.ActivityStreamsOrderedCo
 
 	orderedItems := streams.NewActivityStreamsOrderedItemsProperty()
 
-	outboxItems, err := persistence.GetOutbox(outboxPageSize, (pageInt-1)*outboxPageSize)
+	outboxItems, err := persistence.GetOutbox(outboxPageSize, int32((pageInt-1)*outboxPageSize))
 	if err != nil {
 		return nil, errors.Wrap(err, "unable to get federation followers")
 	}

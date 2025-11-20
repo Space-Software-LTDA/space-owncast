@@ -4,9 +4,9 @@ import (
 	"encoding/json"
 	"net/http"
 
-	"github.com/owncast/owncast/core"
-	"github.com/owncast/owncast/metrics"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/core"
+	"github.com/Space-Software-LTDA/owncast/metrics"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	log "github.com/sirupsen/logrus"
 )
 

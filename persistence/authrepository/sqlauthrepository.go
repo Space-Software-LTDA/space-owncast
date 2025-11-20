@@ -1,7 +1,7 @@
 package authrepository
 
 import (
-	"github.com/owncast/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/core/data"
 )
 
 type SqlAuthRepository struct {

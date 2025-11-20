@@ -1,7 +1,7 @@
 package events
 
 import (
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 )
 
 // FediverseEngagementEvent is a message displayed in chat on representing an action on the Fediverse.

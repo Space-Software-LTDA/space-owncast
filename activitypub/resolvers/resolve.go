@@ -6,11 +6,11 @@ import (
 	"io"
 	"net/http"
 
+	"github.com/Space-Software-LTDA/owncast/activitypub/apmodels"
+	"github.com/Space-Software-LTDA/owncast/activitypub/crypto"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	"github.com/go-fed/activity/streams"
 	"github.com/go-fed/activity/streams/vocab"
-	"github.com/owncast/owncast/activitypub/apmodels"
-	"github.com/owncast/owncast/activitypub/crypto"
-	"github.com/owncast/owncast/persistence/configrepository"
 	"github.com/pkg/errors"
 	log "github.com/sirupsen/logrus"
 )

@@ -1,8 +1,8 @@
 package core
 
 import (
-	"github.com/owncast/owncast/core/storageproviders"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/core/storageproviders"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 )
 
 func setupStorage() error {

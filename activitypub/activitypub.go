@@ -1,15 +1,15 @@
 package activitypub
 
 import (
-	"github.com/owncast/owncast/activitypub/crypto"
-	"github.com/owncast/owncast/activitypub/inbox"
-	"github.com/owncast/owncast/activitypub/outbox"
-	"github.com/owncast/owncast/activitypub/persistence"
-	"github.com/owncast/owncast/activitypub/workerpool"
-	"github.com/owncast/owncast/persistence/configrepository"
+	"github.com/Space-Software-LTDA/owncast/activitypub/crypto"
+	"github.com/Space-Software-LTDA/owncast/activitypub/inbox"
+	"github.com/Space-Software-LTDA/owncast/activitypub/outbox"
+	"github.com/Space-Software-LTDA/owncast/activitypub/persistence"
+	"github.com/Space-Software-LTDA/owncast/activitypub/workerpool"
+	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 
-	"github.com/owncast/owncast/core/data"
-	"github.com/owncast/owncast/models"
+	"github.com/Space-Software-LTDA/owncast/core/data"
+	"github.com/Space-Software-LTDA/owncast/models"
 	log "github.com/sirupsen/logrus"
 )
 

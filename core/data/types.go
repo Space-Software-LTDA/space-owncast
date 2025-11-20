@@ -1,6 +1,6 @@
 package data
 
-import "github.com/owncast/owncast/models"
+import "github.com/Space-Software-LTDA/owncast/models"
 
 // GetStringSlice will return the string slice value for a key.
 func (ds *Datastore) GetStringSlice(key string) ([]string, error) {
