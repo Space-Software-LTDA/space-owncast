@@ -5,7 +5,7 @@ const ADMIN_USERNAME = process.env.NEXT_PUBLIC_ADMIN_USERNAME;
 const ADMIN_STREAMKEY = process.env.NEXT_PUBLIC_ADMIN_STREAMKEY;
 export const NEXT_PUBLIC_API_HOST = process.env.NEXT_PUBLIC_API_HOST;
 
-const API_LOCATION = `${NEXT_PUBLIC_API_HOST}api/admin/`;
+const API_LOCATION = `/api/admin/`;
 
 export const FETCH_INTERVAL = 15000;
 
@@ -115,90 +115,90 @@ export const API_YP_RESET = `${API_LOCATION}yp/reset`;
 const GITHUB_RELEASE_URL = 'https://api.github.com/repos/owncast/owncast/releases/latest';
 
 interface FetchOptions {
-  data?: any;
-  method?: string;
-  auth?: boolean;
+	data?: any;
+	method?: string;
+	auth?: boolean;
 }
 
 export async function fetchData(url: string, options?: FetchOptions) {
-  const { data, method = 'GET', auth = true } = options || {};
+	const { data, method = 'GET', auth = true } = options || {};
 
-  // eslint-disable-next-line no-undef
-  const requestOptions: RequestInit = {
-    method,
-  };
+	// eslint-disable-next-line no-undef
+	const requestOptions: RequestInit = {
+		method,
+	};
 
-  if (data) {
-    requestOptions.body = JSON.stringify(data);
-  }
+	if (data) {
+		requestOptions.body = JSON.stringify(data);
+	}
 
-  if (auth && ADMIN_USERNAME && ADMIN_STREAMKEY) {
-    const encoded = btoa(`${ADMIN_USERNAME}:${ADMIN_STREAMKEY}`);
-    requestOptions.headers = {
-      Authorization: `Basic ${encoded}`,
-    };
-    requestOptions.mode = 'cors';
-    requestOptions.credentials = 'include';
-  }
+	if (auth && ADMIN_USERNAME && ADMIN_STREAMKEY) {
+		const encoded = btoa(`${ADMIN_USERNAME}:${ADMIN_STREAMKEY}`);
+		requestOptions.headers = {
+			Authorization: `Basic ${encoded}`,
+		};
+		requestOptions.mode = 'cors';
+		requestOptions.credentials = 'include';
+	}
 
-  const response = await fetch(url, requestOptions);
-  const json = await response.json();
+	const response = await fetch(url, requestOptions);
+	const json = await response.json();
 
-  if (!response.ok) {
-    const message = json.message || `An error has occurred: ${response.status}`;
-    throw new Error(message);
-  }
-  return json;
+	if (!response.ok) {
+		const message = json.message || `An error has occurred: ${response.status}`;
+		throw new Error(message);
+	}
+	return json;
 }
 
 export async function getUnauthedData(url: string, options?: FetchOptions) {
-  const opts = {
-    method: 'GET',
-    auth: false,
-    ...options,
-  };
-  return fetchData(url, opts);
+	const opts = {
+		method: 'GET',
+		auth: false,
+		...options,
+	};
+	return fetchData(url, opts);
 }
 
 export async function fetchExternalData(url: string) {
-  try {
-    const response = await fetch(url, {
-      referrerPolicy: 'no-referrer', // Send no referrer header for privacy reasons.
-      referrer: '',
-    });
-    if (!response.ok) {
-      const message = `An error has occured: ${response.status}`;
-      throw new Error(message);
-    }
-    const json = await response.json();
-    return json;
-  } catch (error) {
-    console.log(error);
-  }
-  return {};
+	try {
+		const response = await fetch(url, {
+			referrerPolicy: 'no-referrer', // Send no referrer header for privacy reasons.
+			referrer: '',
+		});
+		if (!response.ok) {
+			const message = `An error has occured: ${response.status}`;
+			throw new Error(message);
+		}
+		const json = await response.json();
+		return json;
+	} catch (error) {
+		console.log(error);
+	}
+	return {};
 }
 
 export async function getGithubRelease() {
-  return fetchExternalData(GITHUB_RELEASE_URL);
+	return fetchExternalData(GITHUB_RELEASE_URL);
 }
 
 function upToDate(local, remote) {
-  return !semverGt(remote, local);
+	return !semverGt(remote, local);
 }
 
 // Make a request to the server status API and the Github releases API
 // and return a release if it's newer than the server version.
 export async function upgradeVersionAvailable(currentVersion) {
-  const recentRelease = await getGithubRelease();
-  let recentReleaseVersion = recentRelease.tag_name;
+	const recentRelease = await getGithubRelease();
+	let recentReleaseVersion = recentRelease.tag_name;
 
-  if (recentReleaseVersion.substr(0, 1) === 'v') {
-    recentReleaseVersion = recentReleaseVersion.substr(1);
-  }
+	if (recentReleaseVersion.substr(0, 1) === 'v') {
+		recentReleaseVersion = recentReleaseVersion.substr(1);
+	}
 
-  if (!upToDate(currentVersion, recentReleaseVersion)) {
-    return recentReleaseVersion;
-  }
+	if (!upToDate(currentVersion, recentReleaseVersion)) {
+		return recentReleaseVersion;
+	}
 
-  return null;
+	return null;
 }

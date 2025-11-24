@@ -174,6 +174,18 @@ FROM users,
 	user_access_tokens
 WHERE token = $1
 	AND users.id = user_id;
+-- name: GetUserByEmail :one
+SELECT id,
+	display_name,
+	display_color,
+	created_at,
+	disabled_at,
+	previous_names,
+	namechanged_at,
+	authenticated_at,
+	scopes
+FROM users
+WHERE email = $1;
 -- name: GetUserDisplayNameByToken :one
 SELECT display_name
 FROM users,

@@ -75,6 +75,7 @@ type Notification struct {
 type User struct {
 	ID              string
 	DisplayName     string
+	Email           string
 	DisplayColor    int32
 	CreatedAt       sql.NullTime
 	DisabledAt      sql.NullTime

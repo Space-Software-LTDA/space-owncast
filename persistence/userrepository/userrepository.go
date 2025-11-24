@@ -23,7 +23,7 @@ import (
 type UserRepository interface {
 	ChangeUserColor(userID string, color int) error
 	ChangeUsername(userID string, username string) error
-	CreateAnonymousUser(displayName string) (*models.User, string, error)
+	CreateAnonymousUser(displayName, email string) (*models.User, string, error)
 	DeleteExternalAPIUser(token string) error
 	GetDisabledUsers() []*models.User
 	GetExternalAPIUser() ([]models.ExternalAPIUser, error)
@@ -71,9 +71,25 @@ func New(datastore *data.Datastore) UserRepository {
 }
 
 // CreateAnonymousUser will create a new anonymous user with the provided display name.
-func (r *SqlUserRepository) CreateAnonymousUser(displayName string) (*models.User, string, error) {
+func (r *SqlUserRepository) CreateAnonymousUser(displayName, email string) (*models.User, string, error) {
 	if displayName == "" {
 		return nil, "", errors.New("display name cannot be empty")
+	}
+
+	// If email is provided, check if a user with this email already exists
+	if email != "" {
+		existingUser := r.GetUserByEmail(email)
+		if existingUser != nil && existingUser.DisabledAt == nil {
+			// Get the access token for this existing user
+			query := "SELECT token FROM user_access_tokens WHERE user_id = ? LIMIT 1"
+			row := r.datastore.DB.QueryRow(query, existingUser.ID)
+
+			var accessToken string
+			if err := row.Scan(&accessToken); err == nil {
+				log.Debugf("Returning existing user with email: %s", email)
+				return existingUser, accessToken, nil
+			}
+		}
 	}
 
 	// Try to assign a name that was requested.
@@ -90,6 +106,7 @@ func (r *SqlUserRepository) CreateAnonymousUser(displayName string) (*models.Use
 		ID:           id,
 		DisplayName:  displayName,
 		DisplayColor: displayColor,
+		Email:        email,
 		CreatedAt:    time.Now(),
 	}
 

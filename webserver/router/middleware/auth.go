@@ -5,6 +5,7 @@ import (
 	"net/http"
 	"strings"
 
+	"github.com/Space-Software-LTDA/owncast/config"
 	"github.com/Space-Software-LTDA/owncast/models"
 	"github.com/Space-Software-LTDA/owncast/persistence/authrepository"
 	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
@@ -28,9 +29,14 @@ func RequireAdminAuth(handler http.HandlerFunc) http.HandlerFunc {
 		password := configRepository.GetAdminPassword()
 		realm := "Owncast Authenticated Request"
 
-		// Alow CORS only for localhost:3000 to support Owncast development.
-		validAdminHost := "http://localhost:3000"
-		w.Header().Set("Access-Control-Allow-Origin", validAdminHost)
+		// Allow CORS for localhost:3000 to support Owncast development.
+		// In dev mode, allow all origins.
+		if config.BuildPlatform == "dev" {
+			w.Header().Set("Access-Control-Allow-Origin", "*")
+		} else {
+			validAdminHost := "http://localhost:3000"
+			w.Header().Set("Access-Control-Allow-Origin", validAdminHost)
+		}
 		w.Header().Set("Access-Control-Allow-Credentials", "true")
 		w.Header().Set("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept, Authorization")
 

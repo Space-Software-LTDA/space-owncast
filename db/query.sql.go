@@ -769,19 +769,17 @@ func (q *Queries) GetUserByAuth(ctx context.Context, arg GetUserByAuthParams) (G
 }
 
 const getUserByEmail = `-- name: GetUserByEmail :one
-SELECT users.id,
+SELECT id,
 	display_name,
 	display_color,
-	users.created_at,
+	created_at,
 	disabled_at,
 	previous_names,
 	namechanged_at,
 	authenticated_at,
 	scopes
-FROM users,
-	user_access_tokens
+FROM users
 WHERE email = $1
-	AND users.id = user_id
 `
 
 type GetUserByEmailRow struct {

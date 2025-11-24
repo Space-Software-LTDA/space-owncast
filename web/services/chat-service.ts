@@ -14,7 +14,7 @@ export interface UserRegistrationResponse {
 
 export interface ChatStaticService {
 	getChatHistory(accessToken: string): Promise<ChatMessage[]>;
-	registerUser(username: string): Promise<UserRegistrationResponse>;
+	registerUser(username: string, email: string): Promise<UserRegistrationResponse>;
 }
 
 class ChatService {
@@ -28,13 +28,20 @@ class ChatService {
 		}
 	}
 
-	public static async registerUser(username: string): Promise<UserRegistrationResponse> {
+	public static async registerUser(username: string, email: string): Promise<UserRegistrationResponse> {
+		const payload: { displayName: string; email?: string } = { displayName: username };
+
+		// Only include email if it's not empty
+		if (email && email.trim() !== '') {
+			payload.email = email;
+		}
+
 		const options = {
 			method: 'POST',
 			headers: {
 				'Content-Type': 'application/json',
 			},
-			data: { displayName: username },
+			data: payload,
 		};
 
 		const response = await getUnauthedData(URL_CHAT_REGISTRATION, options);

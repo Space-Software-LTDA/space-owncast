@@ -248,14 +248,26 @@ export const ClientConfigStore: FC = () => {
 			return;
 		}
 
-		// Get username from query parameters
+		// Get username and email from query parameters
 		const urlParams = new URLSearchParams(window.location.search);
 		const usernameFromQuery = urlParams.get('username');
+		const emailFromQuery = urlParams.get('email');
+
+		// Only register if both username and email are provided
+		if (!usernameFromQuery || !emailFromQuery) {
+			const error = 'Registration requires both username and email query parameters';
+			sendEvent([AppStateEvent.Fail]);
+			setGlobalFatalError('Registration Error', error);
+			console.error(error);
+			return;
+		}
+
 		const displayName = usernameFromQuery || optionalDisplayName;
+		const userEmail = emailFromQuery;
 
 		try {
 			sendEvent([AppStateEvent.NeedsRegister]);
-			const response = await ChatService.registerUser(displayName);
+			const response = await ChatService.registerUser(displayName, userEmail);
 			const { accessToken: newAccessToken, displayName: newDisplayName, displayColor } = response;
 			if (!newAccessToken) {
 				return;

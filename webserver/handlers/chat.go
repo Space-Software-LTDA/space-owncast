@@ -91,7 +91,7 @@ func RegisterAnonymousChatUser(w http.ResponseWriter, r *http.Request) {
 	// Handle optional email field
 
 	proposedNewDisplayName = utils.MakeSafeStringOfLength(proposedNewDisplayName, config.MaxChatDisplayNameLength)
-	newUser, accessToken, err := userRepository.CreateAnonymousUser(proposedNewDisplayName)
+	newUser, accessToken, err := userRepository.CreateAnonymousUser(proposedNewDisplayName, *request.Email)
 	if err != nil {
 		log.Errorf("Failed to create anonymous user: %v", err)
 		webutils.WriteSimpleResponse(w, false, err.Error())

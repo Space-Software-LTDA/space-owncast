@@ -49,6 +49,7 @@ CREATE INDEX channel_index ON notifications (channel);
 CREATE TABLE IF NOT EXISTS users (
 	"id" TEXT,
 	"display_name" TEXT NOT NULL,
+	"email" TEXT NOT NULL,
 	"display_color" INTEGER NOT NULL,
 	"created_at" TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
 	"disabled_at" TIMESTAMP,
