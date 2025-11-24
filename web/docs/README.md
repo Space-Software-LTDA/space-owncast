@@ -24,13 +24,11 @@
 ### Submit Statuses
 
 - It would be nice to display indicators of success/warnings to let users know if something has been successfully updated on the server. It has a lot of steps (sorry, but it could probably be optimized), but it'll provide a consistent way to display messaging.
-
   - See `reset-yp.tsx` for an example of using `submitStatus` with `useState()` and the `<FormStatusIndicator>` component to achieve this.
 
 ### Styling
 
 - This admin site chooses to have a generally Dark color palette, but with colors that are different from Ant design's _dark_ stylesheet, so that style sheet is not included. This results in a very large `ant-overrides.scss` file to reset colors on frequently used Ant components in the system. If you find yourself a new Ant Component that has not yet been used in this app, feel free to add a reset style for that component to the overrides stylesheet.
-
   - Take a look at `variables.css` CSS file if you want to give some elements custom css colors.
 
 ---

@@ -25,9 +25,14 @@ if [ ! "$OFFLINE" ]; then
 	npm --silent install 2>/dev/null
 fi
 
+
+# echo "Linting and formatting owncast web..."
+# npm --silent run lint 2>/dev/null
+# npm --silent run format 2>/dev/null
+
 echo "Building owncast web..."
-rm -rf .next
-node_modules/.bin/next build | grep info
+npm --silent run build 2>/dev/null
+
 
 echo "Copying web project to dist directory..."
 
