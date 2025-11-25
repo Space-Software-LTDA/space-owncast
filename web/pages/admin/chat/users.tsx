@@ -10,6 +10,7 @@ import {
   DISABLED_USERS,
   MODERATORS,
   BANNED_IPS,
+  ALL_USERS,
 } from '../../../utils/apis';
 import { UserTable } from '../../../components/admin/UserTable';
 import { ClientTable } from '../../../components/admin/ClientTable';
@@ -27,6 +28,7 @@ export default function ChatUsers() {
   const [ipBans, setIPBans] = useState([]);
   const [clients, setClients] = useState([]);
   const [moderators, setModerators] = useState([]);
+  const [allUsers, setAllUsers] = useState([]);
   const { t } = useTranslation();
 
   const getInfo = async () => {
@@ -56,6 +58,14 @@ export default function ChatUsers() {
       setIPBans(result);
     } catch (error) {
       console.error('error fetching banned ips', error);
+      console.error('error fetching banned ips', error);
+    }
+
+    try {
+      const result = await fetchData(ALL_USERS);
+      setAllUsers(result);
+    } catch (error) {
+      console.error('error fetching all users', error);
     }
   };
 
@@ -135,11 +145,19 @@ export default function ChatUsers() {
     </>
   );
 
+  const allUsersTabTitle = (
+    <span>
+      {t('All Users')} ({allUsers.length})
+    </span>
+  );
+  const allUsersTable = <UserTable data={allUsers} />;
+
   const items = [
     { label: connectedUserTabTitle, key: '1', children: connectedUsers },
     { label: bannedUsersTabTitle, key: '2', children: bannedUsersTable },
     { label: bannedIPTabTitle, key: '3', children: bannedIpTable },
     { label: moderatorUsersTabTitle, key: '4', children: moderatorTable },
+    { label: allUsersTabTitle, key: '5', children: allUsersTable },
   ];
 
   return <Tabs defaultActiveKey="1" items={items} />;

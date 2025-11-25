@@ -33,6 +33,11 @@ export const UserTable: FC<UserTableProps> = ({ data }) => {
       ),
     },
     {
+      title: 'Email',
+      dataIndex: 'email',
+      key: 'email',
+    },
+    {
       title: 'Created',
       dataIndex: 'createdAt',
       key: 'createdAt',

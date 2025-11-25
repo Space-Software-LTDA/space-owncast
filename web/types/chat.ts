@@ -17,6 +17,7 @@ export interface User {
   previousNames: [string];
   nameChangedAt: Date;
   scopes?: [string];
+  email?: string;
 }
 
 export interface UsernameHistory {

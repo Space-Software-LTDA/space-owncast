@@ -215,6 +215,16 @@ func GetDisabledUsers(w http.ResponseWriter, r *http.Request) {
 	webutils.WriteResponse(w, users)
 }
 
+// GetUsers will return all users.
+func GetUsers(w http.ResponseWriter, r *http.Request) {
+	w.Header().Set("Content-Type", "application/json")
+
+	userRepository := userrepository.Get()
+
+	users := userRepository.GetUsers()
+	webutils.WriteResponse(w, users)
+}
+
 // UpdateUserModerator will set the moderator status for a user ID.
 func UpdateUserModerator(w http.ResponseWriter, r *http.Request) {
 	if r.Method != http.MethodPost {

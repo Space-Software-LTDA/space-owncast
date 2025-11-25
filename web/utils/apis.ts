@@ -30,6 +30,9 @@ export const CONNECTED_CLIENTS = `${API_LOCATION}chat/clients`;
 // Get list of disabled/blocked chat users
 export const DISABLED_USERS = `${API_LOCATION}chat/users/disabled`;
 
+// Get list of all users
+export const ALL_USERS = `${API_LOCATION}chat/users`;
+
 // Disable/enable a single user
 export const USER_ENABLED_TOGGLE = `${API_LOCATION}chat/users/setenabled`;
 

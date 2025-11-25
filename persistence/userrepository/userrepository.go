@@ -43,6 +43,7 @@ type UserRepository interface {
 	AddAuth(userID, authToken string, authType models.AuthType) error
 	SetExternalAPIUserAccessTokenAsUsed(token string) error
 	GetUsersCount() int
+	GetUsers() []*models.User
 }
 
 type SqlUserRepository struct {
@@ -440,7 +441,7 @@ func (r *SqlUserRepository) GetUserByID(id string) *models.User {
 	r.datastore.DbLock.Lock()
 	defer r.datastore.DbLock.Unlock()
 
-	query := "SELECT id, display_name, display_color, created_at, disabled_at, previous_names, namechanged_at, scopes FROM users WHERE id = ?"
+	query := "SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at FROM users WHERE id = ?"
 	row := r.datastore.DB.QueryRow(query, id)
 	if row == nil {
 		log.Errorln(row)
@@ -449,9 +450,25 @@ func (r *SqlUserRepository) GetUserByID(id string) *models.User {
 	return r.getUserFromRow(row)
 }
 
+// GetUsers will return all users.
+func (r *SqlUserRepository) GetUsers() []*models.User {
+	query := "SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at FROM users WHERE type IS NOT 'API'"
+
+	rows, err := r.datastore.DB.Query(query)
+	if err != nil {
+		log.Errorln(err)
+		return nil
+	}
+	defer rows.Close()
+
+	users := r.getUsersFromRows(rows)
+
+	return users
+}
+
 // GetDisabledUsers will return back all the currently disabled users that are not API users.
 func (r *SqlUserRepository) GetDisabledUsers() []*models.User {
-	query := "SELECT id, display_name, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at FROM users WHERE disabled_at IS NOT NULL AND type IS NOT 'API'"
+	query := "SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at FROM users WHERE disabled_at IS NOT NULL AND type IS NOT 'API'"
 
 	rows, err := r.datastore.DB.Query(query)
 	if err != nil {
@@ -471,20 +488,22 @@ func (r *SqlUserRepository) GetDisabledUsers() []*models.User {
 
 // GetModeratorUsers will return a list of users with moderator access.
 func (r *SqlUserRepository) GetModeratorUsers() []*models.User {
-	query := `SELECT id, display_name, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at FROM (
-		WITH RECURSIVE split(id, display_name, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, scope, rest) AS (
-		  SELECT id, display_name, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, '', scopes || ',' FROM users
-		   UNION ALL
-		  SELECT id, display_name, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at,
-				 substr(rest, 0, instr(rest, ',')),
-				 substr(rest, instr(rest, ',')+1)
+	query := `SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at 
+	FROM (
+		WITH RECURSIVE split(id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, scope, rest) AS (
+			SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, '', scopes || ','
+			FROM users
+			UNION ALL
+			SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, substr(rest, 0, instr(rest, ',')), substr(rest, instr(rest, ',') + 1)
 			FROM split
-		   WHERE rest <> '')
-		SELECT id, display_name, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, scope
-		  FROM split
-		 WHERE scope <> ''
-		 ORDER BY created_at
-	  ) AS token WHERE token.scope = ?`
+			WHERE rest <> ''
+		)
+		SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, scope
+		FROM split
+		WHERE scope <> ''
+		ORDER BY created_at
+	) AS token
+	WHERE token.scope = ?`
 
 	rows, err := r.datastore.DB.Query(query, models.ModeratorScopeKey)
 	if err != nil {
@@ -510,8 +529,9 @@ func (r *SqlUserRepository) getUsersFromRows(rows *sql.Rows) []*models.User {
 		var previousUsernames string
 		var userNameChangedAt *time.Time
 		var scopesString *string
+		var email sql.NullString
 
-		if err := rows.Scan(&id, &displayName, &scopesString, &displayColor, &createdAt, &disabledAt, &previousUsernames, &userNameChangedAt); err != nil {
+		if err := rows.Scan(&id, &displayName, &email, &scopesString, &displayColor, &createdAt, &disabledAt, &previousUsernames, &userNameChangedAt); err != nil {
 			log.Errorln("error creating collection of users from results", err)
 			return nil
 		}
@@ -524,6 +544,7 @@ func (r *SqlUserRepository) getUsersFromRows(rows *sql.Rows) []*models.User {
 		user := &models.User{
 			ID:            id,
 			DisplayName:   displayName,
+			Email:         email.String,
 			DisplayColor:  displayColor,
 			CreatedAt:     createdAt,
 			DisabledAt:    disabledAt,
@@ -550,8 +571,9 @@ func (r *SqlUserRepository) getUserFromRow(row *sql.Row) *models.User {
 	var previousUsernames string
 	var userNameChangedAt *time.Time
 	var scopesString *string
+	var email sql.NullString
 
-	if err := row.Scan(&id, &displayName, &displayColor, &createdAt, &disabledAt, &previousUsernames, &userNameChangedAt, &scopesString); err != nil {
+	if err := row.Scan(&id, &displayName, &email, &scopesString, &displayColor, &createdAt, &disabledAt, &previousUsernames, &userNameChangedAt); err != nil {
 		return nil
 	}
 
@@ -563,6 +585,7 @@ func (r *SqlUserRepository) getUserFromRow(row *sql.Row) *models.User {
 	return &models.User{
 		ID:            id,
 		DisplayName:   displayName,
+		Email:         email.String,
 		DisplayColor:  displayColor,
 		CreatedAt:     createdAt,
 		DisabledAt:    disabledAt,

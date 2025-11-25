@@ -19,6 +19,7 @@ import (
 	"github.com/Space-Software-LTDA/owncast/core/chat"
 	"github.com/Space-Software-LTDA/owncast/core/data"
 	"github.com/Space-Software-LTDA/owncast/webserver/handlers"
+	"github.com/Space-Software-LTDA/owncast/webserver/handlers/admin"
 	"github.com/Space-Software-LTDA/owncast/webserver/router/middleware"
 )
 
@@ -58,6 +59,7 @@ func Start(enableVerboseLogging bool) error {
 	r.HandleFunc("/*", handlers.IndexHandler)
 
 	// mount the api
+	r.HandleFunc("/api/admin/chat/users", middleware.RequireAdminAuth(admin.GetUsers))
 	r.Mount("/api/", handlers.New().Handler())
 
 	// ActivityPub has its own router
