@@ -145,6 +145,12 @@ export const ChatTextField: FC<ChatTextFieldProps> = ({ defaultText, enabled, fo
     }
 
     const message = getTextContent(contentEditable);
+    const containsLink = message.match(
+      /(?:http[s]?:\/\/.)?(?:www\.)?[-a-zA-Z0-9@%._+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
+    );
+    if (containsLink) {
+      return;
+    }
     const count = graphemer.countGraphemes(message);
     if (count === 0 || count > characterLimit) return;
 
