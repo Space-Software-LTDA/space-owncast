@@ -115,7 +115,11 @@ const getTextContent = node => {
   const text = getNodeTextContent(node, 0)
     .replace(/^\s+/, '') /* remove leading whitespace */
     .replace(/\s+$/, '') /* remove trailing whitespace */
-    .replace(/\n([^\n])/g, '  \n$1'); /* single line break to markdown break */
+    .replace(/\n([^\n])/g, '  \n$1') /* single line break to markdown break */
+    .replace(
+      /(?:http[s]?:\/\/.)?(?:www\.)?[-a-zA-Z0-9@%._+~#=]{2,256}\.[a-z]{2,6}\b(?:[-a-zA-Z0-9@:%_+.~#?&//=]*)/g,
+      '*',
+    );
   return text;
 };
 
