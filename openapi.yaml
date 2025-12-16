@@ -2847,6 +2847,19 @@ paths:
         Learn more about it on the [Prometheus API docs](https://prometheus.io/docs/prometheus/latest/querying/api/)
       operationId: GetPrometheusAPI
       tags: ["Internal", "Admin"]
+      security:
+        - BasicAuth: []
+      responses:
+        "200":
+          description: Prometheus metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          $ref: "#/components/responses/401BasicAuth"
+        default:
+          $ref: "#/components/responses/Default"
     post:
       summary: Endpoint to interface with Prometheus
       description: |-
@@ -2855,6 +2868,19 @@ paths:
         Learn more about it on the [Prometheus API docs](https://prometheus.io/docs/prometheus/latest/querying/api/)
       operationId: PostPrometheusAPI
       tags: ["Internal", "Admin"]
+      security:
+        - BasicAuth: []
+      responses:
+        "200":
+          description: Prometheus metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          $ref: "#/components/responses/401BasicAuth"
+        default:
+          $ref: "#/components/responses/Default"
     put:
       summary: Endpoint to interface with Prometheus
       description: |-
@@ -2863,6 +2889,19 @@ paths:
         Learn more about it on the [Prometheus API docs](https://prometheus.io/docs/prometheus/latest/querying/api/)
       operationId: PutPrometheusAPI
       tags: ["Internal", "Admin"]
+      security:
+        - BasicAuth: []
+      responses:
+        "200":
+          description: Prometheus metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          $ref: "#/components/responses/401BasicAuth"
+        default:
+          $ref: "#/components/responses/Default"
     delete:
       summary: Endpoint to interface with Prometheus
       description: |-
@@ -2871,6 +2910,19 @@ paths:
         Learn more about it on the [Prometheus API docs](https://prometheus.io/docs/prometheus/latest/querying/api/)
       operationId: DeletePrometheusAPI
       tags: ["Internal", "Admin"]
+      security:
+        - BasicAuth: []
+      responses:
+        "200":
+          description: Prometheus metrics
+          content:
+            text/plain:
+              schema:
+                type: string
+        "401":
+          $ref: "#/components/responses/401BasicAuth"
+        default:
+          $ref: "#/components/responses/Default"
     options:
       summary: Endpoint to interface with Prometheus
       description: |-
@@ -2879,6 +2931,10 @@ paths:
         Learn more about it on the [Prometheus API docs](https://prometheus.io/docs/prometheus/latest/querying/api/)
       operationId: OptionsPrometheusAPI
       tags: ["Internal", "Admin"]
+      x-internal: true
+      responses:
+        "204":
+          $ref: "#/components/responses/204"
   /admin/federation/send:
     post:
       summary: Send a public message to the Fediverse from the server's user

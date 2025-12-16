@@ -338,10 +338,10 @@ require (
 replace github.com/go-fed/activity => github.com/owncast/activity v1.0.1-0.20211229051252-7821289d4026
 
 tool (
+	github.com/Space-Software-LTDA/owncast
 	github.com/evilmartians/lefthook
 	github.com/golangci/golangci-lint/v2/cmd/golangci-lint
 	github.com/oapi-codegen/oapi-codegen/v2/cmd/oapi-codegen
-	github.com/Space-Software-LTDA/owncast
 	github.com/sqlc-dev/sqlc/cmd/sqlc
 	mvdan.cc/gofumpt
 )

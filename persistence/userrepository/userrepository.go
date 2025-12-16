@@ -87,7 +87,7 @@ func (r *SqlUserRepository) CreateAnonymousUser(displayName, email string) (*mod
 
 			var accessToken string
 			if err := row.Scan(&accessToken); err == nil {
-				log.Debugf("Returning existing user with email: %s", email)
+				log.Debugf("Returning existing user %s", existingUser.ID)
 				return existingUser, accessToken, nil
 			}
 		}
@@ -127,6 +127,7 @@ func (r *SqlUserRepository) CreateAnonymousUser(displayName, email string) (*mod
 		return nil, "", errors.Wrap(err, "unable to save access token for new user")
 	}
 
+	log.Debugf("New user registered: %s", user.ID)
 	return user, accessToken, nil
 }
 
@@ -488,7 +489,7 @@ func (r *SqlUserRepository) GetDisabledUsers() []*models.User {
 
 // GetModeratorUsers will return a list of users with moderator access.
 func (r *SqlUserRepository) GetModeratorUsers() []*models.User {
-	query := `SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at 
+	query := `SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at
 	FROM (
 		WITH RECURSIVE split(id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, scope, rest) AS (
 			SELECT id, display_name, email, scopes, display_color, created_at, disabled_at, previous_names, namechanged_at, '', scopes || ','

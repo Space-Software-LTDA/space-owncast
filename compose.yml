@@ -13,10 +13,50 @@ services:
       - GIT_COMMIT=${GIT_COMMIT}
       - NAME=docker
     restart: unless-stopped
+    networks:
+      - owncast-network
+
+  # prometheus:
+  #   image: prom/prometheus:latest
+  #   ports:
+  #     - "9090:9090"
+  #   volumes:
+  #     - ./prometheus-config-example.yml:/etc/prometheus/prometheus.yml:ro
+  #     - ./prometheus-rules.yml:/etc/prometheus/owncast_rules.yml:ro
+  #     - prometheus-data:/prometheus
+  #   command:
+  #     - "--config.file=/etc/prometheus/prometheus.yml"
+  #     - "--storage.tsdb.path=/prometheus"
+  #     - "--web.console.libraries=/usr/share/prometheus/console_libraries"
+  #     - "--web.console.templates=/usr/share/prometheus/consoles"
+  #   restart: unless-stopped
+  #   networks:
+  #     - owncast-network
+
+  # grafana:
+  #   image: grafana/grafana:latest
+  #   ports:
+  #     - "3000:3000"
+  #   volumes:
+  #     - grafana-data:/var/lib/grafana
+  #     - ./grafana/provisioning:/etc/grafana/provisioning:ro
+  #     - ./grafana/dashboards:/var/lib/grafana/dashboards:ro
+  #   environment:
+  #     - GF_SECURITY_ADMIN_USER=admin
+  #     - GF_SECURITY_ADMIN_PASSWORD=admin
+  #     - GF_USERS_ALLOW_SIGN_UP=false
+  #     - GF_SERVER_ROOT_URL=http://localhost:3000
+  #   restart: unless-stopped
+  #   networks:
+  #     - owncast-network
+  #   depends_on:
+  #     - prometheus
 
 volumes:
   data:
+  # prometheus-data:
+  # grafana-data:
 
 networks:
-  default:
+  owncast-network:
     driver: bridge

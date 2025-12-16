@@ -1,0 +1,76 @@
+groups:
+  - name: owncast_recording_rules
+    interval: 30s
+    rules:
+      # Viewer metrics
+      - record: owncast:viewers:avg_1h
+        expr: avg_over_time(owncast_instance_active_viewer_count[1h])
+
+      - record: owncast:viewers:max_1h
+        expr: max_over_time(owncast_instance_active_viewer_count[1h])
+
+      - record: owncast:viewers:max_24h
+        expr: max_over_time(owncast_instance_active_viewer_count[24h])
+
+      # Chat engagement metrics
+      - record: owncast:chat:engagement_ratio
+        expr: owncast_instance_active_chat_client_count / (owncast_instance_active_viewer_count > 0)
+
+      - record: owncast:chat:total_engagement
+        expr: owncast_instance_active_viewer_count + owncast_instance_active_chat_client_count
+
+      # Performance metrics
+      - record: owncast:cpu:avg_5m
+        expr: avg_over_time(owncast_instance_cpu_usage[5m])
+
+      - record: owncast:errors:rate_5m
+        expr: rate(owncast_instance_playback_error_count[5m]) * 60
+
+      # Stream status
+      - record: owncast:stream:is_live
+        expr: owncast_instance_active_viewer_count > 0
+
+  - name: owncast_alerts
+    interval: 30s
+    rules:
+      # Alert when CPU usage is high
+      - alert: OwncastHighCPU
+        expr: owncast_instance_cpu_usage > 80
+        for: 5m
+        labels:
+          severity: warning
+        annotations:
+          summary: "Owncast CPU usage is high"
+          description: "CPU usage is {{ $value }}% (threshold: 80%)"
+
+      # Alert when playback errors are high
+      - alert: OwncastHighPlaybackErrors
+        expr: owncast_instance_playback_error_count > 10
+        for: 2m
+        labels:
+          severity: warning
+        annotations:
+          summary: "High playback error count"
+          description: "{{ $value }} playback errors detected"
+
+      # Alert when stream has viewers but very low chat engagement
+      - alert: OwncastLowChatEngagement
+        expr: |
+          (owncast_instance_active_chat_client_count / owncast_instance_active_viewer_count < 0.05)
+          and (owncast_instance_active_viewer_count > 10)
+        for: 10m
+        labels:
+          severity: info
+        annotations:
+          summary: "Low chat engagement"
+          description: "Only {{ $value | humanizePercentage }} of viewers are chatting"
+
+      # Alert when CPU is critically high
+      - alert: OwncastCriticalCPU
+        expr: owncast_instance_cpu_usage > 95
+        for: 2m
+        labels:
+          severity: critical
+        annotations:
+          summary: "Owncast CPU usage is critical"
+          description: "CPU usage is {{ $value }}% (threshold: 95%)"

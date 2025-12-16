@@ -80,8 +80,6 @@ func RegisterAnonymousChatUser(w http.ResponseWriter, r *http.Request) {
 		log.Debugln("Failed to decode request body:", err)
 	}
 
-	log.Printf("request: %+v", request)
-
 	proposedNewDisplayName := r.Header.Get("X-Forwarded-User")
 	if proposedNewDisplayName == "" && request.DisplayName != nil {
 		proposedNewDisplayName = *request.DisplayName

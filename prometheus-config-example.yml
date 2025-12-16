@@ -1,0 +1,31 @@
+# Prometheus configuration for scraping Owncast metrics in Docker Compose
+global:
+  scrape_interval: 30s
+  evaluation_interval: 30s
+
+# Recording rules - Pre-computed queries for common metrics
+rule_files:
+  - /etc/prometheus/owncast_rules.yml
+
+scrape_configs:
+  - job_name: "owncast"
+    scrape_interval: 30s
+    metrics_path: "/api/admin/prometheus"
+
+    # Authentication required
+    basic_auth:
+      username: "admin" # Replace with your Owncast admin username
+      password: "abc123" # Replace with your Owncast admin password (default dev: abc123)
+
+    static_configs:
+      - targets: ["owncast:8080"] # Docker Compose service name
+        labels:
+          instance: "owncast-dev"
+          environment: "development"
+# Available Owncast metrics:
+# - owncast_instance_active_viewer_count
+# - owncast_instance_active_chat_client_count
+# - owncast_instance_total_chat_users
+# - owncast_instance_current_chat_message_count
+# - owncast_instance_playback_error_count
+# - owncast_instance_cpu_usage
