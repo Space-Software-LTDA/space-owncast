@@ -1,3 +1,4 @@
+const path = require('path');
 const withLess = require('next-with-less');
 const withBundleAnalyzer = require('@next/bundle-analyzer')({
   enabled: process.env.ANALYZE === 'true',
@@ -76,6 +77,12 @@ module.exports = async phase => {
             issuer: /\.[jt]sx?$/,
             use: ['@svgr/webpack'],
           });
+
+          // Ensure next-export-i18n can resolve the shared i18n files when using pnpm without shadowing Next internals.
+          config.resolve.alias = {
+            ...config.resolve.alias,
+            '../../i18n/index.js': path.resolve(__dirname, 'i18n/index.js'),
+          };
 
           return config;
         },
