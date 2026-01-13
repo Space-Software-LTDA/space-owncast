@@ -16,6 +16,7 @@ import (
 	"github.com/Space-Software-LTDA/owncast/core/webhooks"
 	"github.com/Space-Software-LTDA/owncast/models"
 	"github.com/Space-Software-LTDA/owncast/notifications"
+	"github.com/Space-Software-LTDA/owncast/persistence/chatmessagerepository"
 	"github.com/Space-Software-LTDA/owncast/persistence/configrepository"
 	"github.com/Space-Software-LTDA/owncast/utils"
 )
@@ -128,6 +129,9 @@ func SetStreamAsDisconnected() {
 	StartOfflineCleanupTimer()
 	stopOnlineCleanupTimer()
 	saveStats()
+
+	chatMessageRepository := chatmessagerepository.Get()
+	chatMessageRepository.ClearChatHistory()
 
 	go webhooks.SendStreamStatusEvent(models.StreamStopped)
 }

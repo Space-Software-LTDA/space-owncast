@@ -26,6 +26,7 @@ type ChatMessageRepository interface {
 	GetMessageIdsForUserID(userID string) ([]string, error)
 	SetMessageVisibilityForMessageIDs(messageIDs []string, visible bool) error
 	GetMessagesCount() int64
+	ClearChatHistory()
 }
 
 type SqlChatMessageRepository struct {
@@ -520,4 +521,31 @@ func (r *SqlChatMessageRepository) GetMessagesCount() int64 {
 		}
 	}
 	return count
+}
+
+func (r *SqlChatMessageRepository) ClearChatHistory() {
+	r.datastore.DbLock.Lock()
+	defer r.datastore.DbLock.Unlock()
+
+	tx, err := r.datastore.DB.Begin()
+	if err != nil {
+		log.Errorln("error clearing chat history", err)
+		return
+	}
+
+	_, err = tx.Exec("DELETE FROM messages")
+	if err != nil {
+		log.Errorln("error clearing chat history", err)
+		_ = tx.Rollback()
+		return
+	}
+
+	if err = tx.Commit(); err != nil {
+		log.Errorln("error clearing chat history", err)
+		return
+	}
+
+	defer func() {
+		_historyCache = nil
+	}()
 }
