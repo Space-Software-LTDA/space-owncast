@@ -146,6 +146,12 @@ func (s *Server) userColorChanged(eventData chatClientEvent) {
 
 func (s *Server) userMessageSent(eventData chatClientEvent) {
 	userRepository := userrepository.Get()
+	configRepository := configrepository.Get()
+
+	if configRepository.GetChatDisabled() {
+		log.Debugln("chat is disabled, ignoring user message")
+		return
+	}
 
 	var event events.UserMessageEvent
 	if err := json.Unmarshal(eventData.data, &event); err != nil {
@@ -176,10 +182,157 @@ func (s *Server) userMessageSent(eventData chatClientEvent) {
 		return
 	}
 
-	payload := event.GetBroadcastPayload()
-	if err := s.Broadcast(payload); err != nil {
-		log.Errorln("error broadcasting UserMessageEvent payload", err)
-		return
+	prohibitedTerms := []string{
+		"golpe",
+		"golpes",
+		"golpista",
+		"golpistas",
+		"golp",
+		"g0lpe",
+		"g0lpista",
+		"scam",
+		"scammer",
+		"fraude",
+		"fraude financeira",
+		"esquema",
+		"esquema ilegal",
+		"piramide",
+		"esquema de piramide",
+		"pirâmide",
+		"esquema de pirâmide",
+		"estelionato",
+		"crime",
+		"criminoso",
+		"quadrilha",
+		"safado",
+		"safados",
+		"ladrão",
+		"ladrao",
+		"ladrões",
+		"ladroes",
+		"vagabundo",
+		"vagabundos",
+		"pilantra",
+		"pilantragem",
+		"canalha",
+		"mau caráter",
+		"mau-caráter",
+		"bandido",
+		"bandidagem",
+		"charlatão",
+		"charlatao",
+		"charlatões",
+		"picareta",
+		"picaretagem",
+		"sacar",
+		"saque",
+		"não consigo sacar",
+		"nao consigo sacar",
+		"nao consigo fazer saque",
+		"saque travado",
+		"saque bloqueado",
+		"saque pendente",
+		"dinheiro preso",
+		"dinheiro bloqueado",
+		"dinheiro sumiu",
+		"cadê meu dinheiro",
+		"cade meu dinheiro",
+		"cadê o dinheiro",
+		"cade o dinheiro",
+		"perdi dinheiro",
+		"perdi meu dinheiro",
+		"não recebi",
+		"nao recebi",
+		"não caiu",
+		"nao caiu",
+		"saldo travado",
+		"saldo bloqueado",
+		"estou com problemas",
+		"estou com problema",
+		"problema",
+		"problemas",
+		"isso é problema",
+		"isso e problema",
+		"não funciona",
+		"nao funciona",
+		"não está funcionando",
+		"nao esta funcionando",
+		"não resolve",
+		"nao resolve",
+		"ninguém responde",
+		"ninguem responde",
+		"suporte não responde",
+		"suporte nao responde",
+		"ninguém ajuda",
+		"ninguem ajuda",
+		"mentira",
+		"mentiroso",
+		"mentirosos",
+		"enganação",
+		"enganacao",
+		"enganar",
+		"enganando",
+		"ilusão",
+		"ilusao",
+		"ilusão financeira",
+		"ilusao financeira",
+		"promessa falsa",
+		"falsas promessas",
+		"propaganda enganosa",
+		"furada",
+		"fria",
+		"isso é fria",
+		"isso e fria",
+		"perda de tempo",
+		"não recomendo",
+		"nao recomendo",
+		"cuidado",
+		"tomem cuidado",
+		"alerta",
+		"aviso",
+		"denúncia",
+		"denuncia",
+		"vou denunciar",
+		"denunciar",
+		"reclame aqui",
+		"procon",
+		"polícia",
+		"policia",
+		"isso é golpe",
+		"isso e golpe",
+		"é golpe",
+		"e golpe",
+		"isso é fraude",
+		"isso e fraude",
+		"vocês são golpistas",
+		"voces sao golpistas",
+		"empresa golpista",
+		"site golpista",
+		"roubo",
+		"roubaram meu dinheiro",
+		"perdi tudo",
+		"fui enganado",
+		"fui enganada",
+	}
+
+	var containsProhibitedTerm bool = false
+	for _, term := range prohibitedTerms {
+		term = strings.ToLower(term)
+
+		if strings.Contains(strings.ToLower(event.Body), term) {
+			containsProhibitedTerm = true
+		}
+	}
+
+	if !containsProhibitedTerm {
+		payload := event.GetBroadcastPayload()
+		if err := s.Broadcast(payload); err != nil {
+			log.Errorln("error broadcasting UserMessageEvent payload", err)
+			return
+		}
+	} else {
+		hidden := time.Now()
+		event.HiddenAt = &hidden
 	}
 
 	// Send chat message sent webhook
