@@ -33,7 +33,6 @@ var (
 
 // nolint:cyclop
 func main() {
-	println("Hello")
 	flag.Parse()
 
 	if *logDirectory != "" {

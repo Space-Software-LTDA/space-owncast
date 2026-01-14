@@ -331,6 +331,7 @@ func (s *Server) userMessageSent(eventData chatClientEvent) {
 			return
 		}
 	} else {
+		log.Debugln("message from", logSanitize(event.User.DisplayName), "contained prohibited term, not broadcasting: ", logSanitize(event.Body))
 		hidden := time.Now()
 		event.HiddenAt = &hidden
 	}

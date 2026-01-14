@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 # shellcheck disable=SC2059
 
-set -o errexit
-set -o nounset
-set -o pipefail
+# set -o errexit
+# set -o nounset
+# set -o pipefail
 
 OFFLINE=
 while [[ $# -gt 0 ]]; do
