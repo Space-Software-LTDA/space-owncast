@@ -8,7 +8,7 @@
 # syntax=docker/dockerfile:1.4
 
 # Build the frontend
-FROM node:alpine AS frontend-build
+FROM node:24.13-slim AS frontend-build
 
 WORKDIR /build
 COPY web/package*.json web/
