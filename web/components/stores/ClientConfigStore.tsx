@@ -114,9 +114,9 @@ const removedMessageIdsAtom = atom<string[]>({
 export const isChatAvailableSelector = selector({
 	key: 'isChatAvailableSelector',
 	get: ({ get }) => {
-		const state: AppStateOptions = get(appStateAtom);
+		const state = get(clientConfigStateAtom)
 		const accessToken: string = get(accessTokenAtom);
-		return accessToken && state.chatAvailable && !hasWebsocketDisconnected;
+		return accessToken && !state.chatDisabled && !hasWebsocketDisconnected;
 	},
 });
 

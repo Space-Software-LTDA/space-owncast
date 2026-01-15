@@ -31,7 +31,7 @@ fi
 # npm --silent run format 2>/dev/null
 
 echo "Building owncast web..."
-npm --silent run build 2>/dev/null
+npm --silent run build
 
 
 echo "Copying web project to dist directory..."
