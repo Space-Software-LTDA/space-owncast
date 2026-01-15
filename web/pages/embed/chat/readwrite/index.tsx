@@ -11,7 +11,6 @@ import {
 	clientConfigStateAtom,
 	appStateAtom,
 	serverStatusState,
-	isChatAvailableSelector,
 } from '../../../../components/stores/ClientConfigStore';
 import Header from '../../../../components/ui/Header/Header';
 import { ClientConfig } from '../../../../interfaces/client-config.model';

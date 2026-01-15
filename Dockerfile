@@ -11,11 +11,12 @@
 FROM node:24.13-slim AS frontend-build
 
 WORKDIR /build
-COPY web/package*.json web/
-RUN cd web && npm install
+COPY web/package.json .
+COPY web/package-lock.json .
+RUN npm install --legacy-peer-deps
 
-COPY web/ web/
-RUN cd web && npm run build
+COPY web/ .
+RUN npm run build
 
 # Build the backend
 FROM golang:alpine AS build
@@ -45,7 +46,7 @@ RUN addgroup -g 101 -S owncast && adduser -u 101 -S owncast -G owncast
 # Copy owncast assets
 WORKDIR /app
 COPY --from=build /build/owncast /app/owncast
-COPY --from=frontend-build /build/web/out /app/static/web
+COPY --from=frontend-build /build/out /app/static/web
 RUN mkdir /app/data
 RUN chown -R owncast:owncast /app
 USER owncast
