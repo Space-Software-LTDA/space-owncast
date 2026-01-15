@@ -6,6 +6,18 @@
 # See ‘Earthfile’ for the recipes used in official builds.
 
 # syntax=docker/dockerfile:1.4
+
+# Build the frontend
+FROM node:alpine AS frontend-build
+
+WORKDIR /build
+COPY web/package*.json web/
+RUN cd web && npm install
+
+COPY web/ web/
+RUN cd web && npm run build
+
+# Build the backend
 FROM golang:alpine AS build
 
 RUN apk update && apk add --no-cache git gcc build-base linux-headers
@@ -33,6 +45,7 @@ RUN addgroup -g 101 -S owncast && adduser -u 101 -S owncast -G owncast
 # Copy owncast assets
 WORKDIR /app
 COPY --from=build /build/owncast /app/owncast
+COPY --from=frontend-build /build/web/out /app/static/web
 RUN mkdir /app/data
 RUN chown -R owncast:owncast /app
 USER owncast

@@ -27,7 +27,7 @@ export default function ReadWriteChatEmbed() {
 	const clientStatus = useRecoilValue<ServerStatus>(serverStatusState);
 
 	const appState = useRecoilValue<AppStateOptions>(appStateAtom);
-	const isChatAvailable = useRecoilValue(isChatAvailableSelector);
+	// const isChatAvailable = useRecoilValue(isChatAvailableSelector);
 
 	const { name, chatDisabled } = clientConfig;
 	const { videoAvailable } = appState;
@@ -72,7 +72,7 @@ export default function ReadWriteChatEmbed() {
 							isModerator={currentUser.isModerator}
 							showInput
 							height="92vh"
-							chatAvailable={isChatAvailable}
+							chatAvailable={!clientConfig.chatDisabled}
 						/>
 					</div>
 				)}
