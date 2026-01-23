@@ -13,7 +13,8 @@ FROM node:24.13-slim AS frontend-build
 WORKDIR /build
 COPY web/package.json .
 COPY web/package-lock.json .
-RUN npm install --legacy-peer-deps
+RUN npm ci --legacy-peer-deps --no-audit --no-fund --prefer-offline && \
+    npm cache clean --force
 
 COPY web/ .
 RUN npm run build
